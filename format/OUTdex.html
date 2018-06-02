@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8"/>
+<link type="text/css" rel="stylesheet" href="Sesse.css">
+<title> INDEX </title>
+</head>
+<body class="bode">
+<P class="bad"> Voltar ao Site <a name="topo" href="index.html">Final</a> </P> <br>
+<img src = "ifpr_logo3.png">
+<p> <center> <big> <b> <a name="topo"> INÍCIO </a> </big> </center> </b>
+<P class="teto0"> FORMATOS DE INSTRUÇÃO </P>
+<br> <a href="OUTref.html"> REFERÊNCIAS BIBLIOGRÁFICAS </a>
+<br> Trabalho Interdisciplinar: <br> <font color=red> ARQUITETURA DE COMPUTADORES </font> & <font color=green> INTRODUÇÃO À INFORMÁTICA </font>
+<p> <big> Docente: <b> prof. Me. Márcio de Abreu Moreira </b> </big>
+<p> <b> Discentes: </b>
+<ul>
+<li> Kau Mendes Loureiro Marques - <a href="images/kau.png">kaukml@hotmail.com</a> </li>
+<li> Mateus Paixão Rocha - <a href="images/pai.png">paixaoomateus@gmail.com</a> </li>
+<li> Guilherme Akira Demenech Mori - <a href="images/aki.png">guiakira.demenechmori@gmail.com</a> </li>
+</ul>
+<big> INTRODUÇÃO </big>
+<ol>
+<big> O QUE É, O QUE É? </big>
+<li> <a href="#ic"> Instrução Computacional </a> </li>
+<li> <a href="#formato"> FORMATO DE INSTRUÇÃO </a> </li>
+<li> <a href="#opcode"> Opcode </a> </li>
+<li> <a href="#conjunto"> Conjunto de Instruções </a> </li>
+</ol>
+<ul>
+<big> NOÇÕES BÁSICAS DE INFORMÁTICA </big>
+<li> O que é <a href="#hard">Hardware</a>? </li>
+<li> O que é <a href="#soft">Software</a>? </li>
+<li> O que é <a href="#memo">MEMÓRIA</a>? </a> </li>
+<li> O que é <a href="#cpu">PROCESSADOR</a>? </a> </li>
+<li> O que é <a href="#reg">REGISTRADOR</a>? </a> </li>
+<li> O que é <a href="#word">PALAVRA</a>? </a> </li>
+<li> O que é <a href="#bit">BIT</a>? </a> </li>
+</ul> <ol>
+
+<li><a name="ic"><big>INSTRUÇÃO COMPUTACIONAL</big></a>: tarefa, fração de um trabalho, operação a ser exercida, exercutada pelo <a href="#cpu">PROCESSADOR</a>, num <a href="#soft">Programa</a> em execução.</li><br>
+
+<li><a name="formato"><big>FORMATO DE INSTRUÇÃO</big></a>: sintaxe da operação, como a <a href="#ic">Instrução Computacional</a> é escrita em <a href="#bit">BITS</a>. Obrigatoriamente possui o <a href="#opcode">OPCODE</a> e nenhum ou, no máximo 3 Endereços, os Operandos, dados a serem manipulados pelo <a href="#cpu">PROCESSADOR</a> nessa <a href="#ic">Tarefa</a>.</li><br>
+
+<li><a name="opcode"><big>OPCODE</big></a>: nome da <a href="#ic">Operação</a>, presente no <a href="#conjunto">CONJUNTO DE INSTRUÇÕES</a> do <a href="#cpu">PROCESSADOR</a>. É ele que permite ao computador saber o que deve ser feito. As informações que o seguem no <a href="#formato">Formato de Instrução</a>, se é que o há, o informam com que informações ele lidará naquela <a href="#ic">Tarefa</a>. <br> Exemplos: Operações Matemáticas, Lógicas, de Trânsito de Dados e Controle do Computador. </li><br>
+
+<li><a name="conjunto"><big>CONJUNTO DE INSTRUÇÕES</big></a>: ou Jogo de Instruções (ISA, "Instruction Set Architeture"), é a lista e definição de todas as <a href="#ic">Operações</a> que o <a href="#cpu">PROCESSADOR</a> de determinada máquina suporta, que é capaz de executar. Nele, há os <a href="#opcode">Códigos das Operações</a> todas que ele "conhece", e os programas e suas instruções organizam essas "habilidades". </li><br>
+
+</ol> <ul>
+
+<li><a name="hard"><big>HARDWARE</big></a>: é a Parte Física, construída, do computador. </li>
+<li><a name="soft"><big>SOFTWARE</big></a>: é a Parte Programada, informacional, do computador</li>
+
+<br><li><a name="memo"><big>MEMÓRIA</big></a>: armazenamento de dados, arquivos e programas do computador, onde reside o Software no Hardware, sem estar "funcionando". </li><br>
+
+<li><a name="cpu"><big>PROCESSADOR</big></a>: parte pensante da máquina, o computador executa os programas da memória e lê os arquivos pelo Processador, com as devidas <a href="#ic">Instruções Computacionais</a> guardadas na memória. O cérebro do processamento é o CPU (Central Processor Unity, Unidade Central de Processamento, UCP), por onde todas as informações passam e de onde se coordena os outros microcontroladores, se houver. Possui três componentes interdependentes: </li>
+<ul>
+<li> 1. UCP (Unidade Central de Processamento): coordena o trânsito de dados pelas Memórias, interpreta as <a href="#ic">Instruções Computacionais</a>, entre outras funções. </li>
+<li> 2. ULA (Unidade Lógica e Aritmética): faz todos os cálculos e comparações lógicas entregues a ela pela UCP, ou seja, executa as operações lidas e interpretadas pela UCP.</li>
+</ul>
+<li><a name="reg"><big>3. REGISTRADOR</big></a>: unidade mínima de memória, cerca a UCP e a ULA, sendo sua memória de trabalho imediato. registra somente um <a href="#bit">BIT</a>, que rapidamente é utilizado e manipulado.</li><br>
+
+<li><a name="word"><big>PALAVRA</big></a>: é definida pela quantidade de portas entre a Memória e o Processador, que transportam, juntas, uma PALAVRA DE <a href="#bit">DADOS BINÁRIOS</a>. </li><br>
+
+<li><a name="bit"><big>BIT</big></a>: é a unidade mínima de Informação, significa Binary DigiT, dígito binário, ous seja: 0 ou 1, transimitido como Ligado (1) ou Desligado (0), e interpretado como Verdadeiro ou Falso, Sim ou Não, Positivo ou Negativo... entre outras dualidades lógicas. 
+</li><br>
+</ul>
+<big> O que é, o que é? </big>
+<ol>
+<li> <a href="#ic"> Instrução Computacional </a> </li>
+<li> <a href="#formato"> FORMATO DE INSTRUÇÃO </a> </li>
+<li> <a href="#opcode"> Opcode </a> </li>
+<li> <a href="#conjunto"> Conjunto de Instruções </a> </li>
+</ol>
+<big> NOÇÕES BÁSICAS DE INFORMÁTICA </big>
+<ul>
+<li> O que é <a href="#hard">Hardware</a>? </li>
+<li> O que é <a href="#soft">Software</a>? </li>
+<li> O que é <a href="#memo">MEMÓRIA</a>? </a> </li>
+<li> O que é <a href="#cpu">PROCESSADOR</a>? </a> </li>
+<li> O que é <a href="#reg">REGISTRADOR</a>? </a> </li>
+<li> O que é <a href="#word">PALAVRA</a>? </a> </li>
+<li> O que é <a href="#bit">BIT</a>? </a> </li>
+</ul>
+<p> <a href="#topo"> <b> SUBIR DE VOLTA AO TOPO DA PÁGINA </b> </a>
+</body>
+</html>

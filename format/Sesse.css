@@ -1,0 +1,39 @@
+@charset "utf-8";
+
+.bode {
+	margin-left: 5%;
+	margin-right: 8%;
+	font-family: "Calibri";
+	font-size: 22px;
+}
+
+.teto0 {
+	font-family: "Arial Black";
+	color: rgb(0, 232, 15);
+	font-size: 42px;
+	margin-left: 20%;
+	margin-right: 15%;
+}
+
+.teto1 {
+	font-family: "Arial Black";
+	color: red;
+	font-size: 36px;
+	margin-left: 20%;
+	margin-right: 15%;
+}
+
+.teto2 {
+	font-family: "Arial Black";
+	font-size: 27px;
+	margin-left: 15%;
+	margin-right: 10%;
+}
+
+.bad {
+	background-color: beige;
+	margin-left: 2%;
+	margin-right: 4%;
+	font-family: "Comic Sans MS";
+	font-size: 16px;
+}

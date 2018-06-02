@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Formato de Instrução</title>
+<body>
+<h1>Texto relevante</h1>
+<h2>Arquitetura:</h2><ul>
+<li> Conjunto de instruções.</li>
+<li> Número de bits para representar diferentes categorias de
+dados (e.g., números e caracteres).</li>
+<li> Mecanismos de entrada/saída.</li>
+<li> Modos de endereçamento suportados.</li>
+</ul>
+
+*: A presença ou não de uma instrução de máquina de
+multiplicação representa uma decisão de projeto
+arquitetural.
+<h2>Organização:</h2><ul>
+<li> Sinais de controle.</li>
+<li> Interfaces entre o computador e periféricos.</li>
+<li> Tecnologia de memória utilizada.</li>
+</ul>
+*:Considerações a respeito de como esta instrução será
+implementada – se através de uma unidade de
+multiplicação especial ou por meio de um mecanismo
+que repetidamente utilize a unidade de adição do
+sistema – fazem parte do projeto organizacional.
+<p>
+<h2>Conjunto de Instruções</h2><ul>
+<li> Definir o conjunto de instruções de um processador
+está longe de ser uma tarefa trivial.</li>
+<li> Existem várias escolhas que precisam ser
+balanceadas de maneira adequada a fim de atender
+múltiplos requisitos.</li>
+</ul>
+ <h2>Questões relacionadas:</h2><ul>
+ <li>Número de instruções necessárias para executar um
+programa.</li>
+ <li>Número de ciclos de relógio exigidos por cada
+instrução.</li>
+ <li>Velocidade do relógio.</li>
+ </ul>
+ 
+ Operações aritméticas constituem uma porção bastante
+comum em qualquer ISA.<p>
+ Exemplo: ADD a, b, c # a = (b + c)<p>
+ <h3>Quantos operandos uma instrução deve ter?</h3>
+ 3 endereços: ADD a, b, c<br>
+ 2 endereços: o resultado é armazenado em um dos operandos.<p>
+MOVE a, b #a = b<br>
+ADD a, c #a = (a + c) = (b + c)<p>
+ 1 endereço: somente um operando é explicitado; o resultado é
+guardado em um local (registrador) específico.<p>
+LDA b<br>
+ADD c<br>
+STA a<br>
+
+
+</head>
+</body>
+</html>

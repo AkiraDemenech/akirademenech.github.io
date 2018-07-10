@@ -69,8 +69,9 @@
 				
 				<!--	Sometimes, something is so small that its comment is substantially more visible	-->
 				<script>
-					var c = ["Sumário", "Índice", "Menu", ""]	//	Actually, this is called "Indecisão"
-					document.write(c[Math.floor(Math.random() * c.length)])	//	Vai qualquer um deles mesmo!
+					var c = ["Sumário", "Índice", "Menu", "", "Rol", "Enumeração", "Ementa", "Súmula", "", "Summary", "Index", "", "List", "Enumeration", ""]
+					//	Actually, this is called "Indecisão"	//	Na verdade, isso é chamado "Dictionary use"
+					document.write(c[Math.floor(Math.random() * c.length)])	//	Vai qualquer um deles mesmo
 				</script>
 				
 				<i class="fa fa-bars"><!--	Funny, but there is nothing here; just this programming shadow	--></i>
@@ -122,6 +123,7 @@
 								}
 							</script>
 							<!--
+									//	Seriam esses 2^3 dígitos binários um octeto ou um byte?
 								Por que um byte em binário?
 								Por que um char ASCII de título?
 								Talvez seja mais simples ainda:
@@ -163,7 +165,7 @@
 				<div class="col-lg-8 mx-auto">
 				
 				<h2>
-					SObre MIm
+					SOBre mim
 				</h2>
 				
 				<p>
@@ -216,11 +218,18 @@
 				<br>
 				<small>
 					Trabalho para as disciplinas de Arquitetura de Computadores e Introdução à Informática.
-					<br>
 					Desenvolvida pesquisa exposta em HTML e outros detalhes do template adotado.
 				</small>
 			</h4>
 			
+			<h4>
+				<a target="_blank" href="redes/index.jsp">Tabela IPv4</a> (2018.1)
+				<br>
+				<small>
+					Trabalho sobre as disciplinas de Redes de Computadores e Linguagem de Programação Web.
+					Desenvolvido o gerador da Tabela em HTML-JavaScript e implementado o Divisor de Rede em Java (JSP).
+				</small>
+			</h4>
 		  
 		  <!--
 		  <h2>Download Grayscale</h2>
@@ -254,10 +263,42 @@
 			</p>
 			
 			<p class="list-inline banner-social-buttons">
+				
+				<!--
+				<a href="" class="btn btn-default btn-lg">
+					<i class="fa fa-linkedin fa-fw"></i>
+					<span class="network-name">LinkedIn</span>
+				</a>
+				-->
+				
 				<a href="https://github.com/AkiraDemenech" class="btn btn-default btn-lg">
 					<i class="fa fa-github fa-fw"><!--	What a beautiful prefab button	--></i>
-					<span class="network-name">GitHub</span>
+					<span class="network-name">
+						GitHub <!--	E continuamos sendo Case Sensitive mesmo quando o display não é mais...	-->
+					</span>
 				</a>
+
+				<!--
+				<a href="" class="btn btn-default btn-lg">
+						<i class="fa fa-instagram fa-fw"></i>
+						<span class="network-name">Instagram</span>
+				</a>
+				-->
+
+				<!--
+				<a href="" class="btn btn-default btn-lg">
+						<i class="fa fa-facebook fa-fw"></i>
+						<span class="network-name">Facebook</span>
+				</a>
+				-->
+
+				<!--
+				<a href="" class="btn btn-default btn-lg">
+						<i class="fa fa-twitter fa-fw"></i>
+						<span class="network-name">Twitter</span>
+				</a>
+				-->
+
 			</p>
 			
 		  </div>
@@ -279,13 +320,14 @@
 	<footer>
 		<div class="container text-center">
 			<p>
-				Copyright &copy; <b>MORI</b>, 2018.
+				Copyright &copy; <b>MORI</b>, <script>	document.write((new Date()).getFullYear());	//	!This.isGambiarra();	</script>.
 				<!--
 					Special thanks go to GitHub and Bootstrap
 					Spacial thanks go to everybody that have helped me
+					Parcial thanks for JavaScript be incredible.
 					
-					Pictures from MON <www.museuoscarniemeyer.org.br> and Cepequinho 2017 IFPR
-					As fotos foram tiradas no MON (o relógio e a canoa) e durante o 2º Cepequinho (Abra-me)
+					Pictures from MON <www.museuoscarniemeyer.org.br> and Cepequinho 2017 (IFPR)
+					As fotos foram tiradas no Museu Oscar Niemeyer (o relógio e a canoa) e durante o 2º Cepequinho (Abra-me)
 				-->
 			</p>
 		</div>

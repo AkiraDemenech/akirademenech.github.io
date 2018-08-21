@@ -62,8 +62,14 @@
 	<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
 		<div class="container">
 			
-			<a class="navbar-brand js-scroll-trigger" href="#page-top"><!--	There is no Title, but here	-->it BEGINs</a>
-			<!--	As you can see, the HTML html Html ignore my Case Sensitivity	-->
+			<a class="navbar-brand js-scroll-trigger" href="#page-top">
+				<!--	There is no Title, but here it could exist	-->
+				<script>
+					var c = ["Beginning", "Começo", "Início", "Topo", "Up"]
+					//	This comment will apear again soon	//	Com uma formatação bastante próxima
+					document.write(c[Math.floor(Math.random() * c.length)])	//	um pouco do acaso.
+				</script>
+			</a>
 			
 			<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
 				
@@ -89,13 +95,12 @@
 				<li class="nav-item">
 					<a class="nav-link js-scroll-trigger" href="#about">About</a>
 				</li>
+				<li class="nav-item">
+					<a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
+				</li>
 				
 				<li class="nav-item">
 					<a class="nav-link js-scroll-trigger" href="#download">Development</a>
-				</li>
-			
-				<li class="nav-item">
-					<a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
 				</li>
 			
 				<li class="nav-item">
@@ -198,11 +203,66 @@
 						}
 					</script>
 				</p>
-			
+					<a id="contact"></a><br>
+					<h3>
+						Contato
+					</h3>
+				  <p>
+					  <a href="mailto:akira.demenech@gmail.com">
+						  akira.demenech@gmail.com
+					  </a>
+					  
+					  <br>
+					  Currículo:
+					  <a href="http://lattes.cnpq.br/5298612923145270">
+						  lattes.cnpq.br/5298612923145270
+					  </a>
+
+				  </p>
+				  
+				  <p class="list-inline banner-social-buttons">
+					  
+					<!--
+					  <a target="_blank" href="" class="btn btn-default btn-lg">
+						  <i class="fa fa-linkedin fa-fw"></i>
+						  <span class="network-name">LinkedIn</span>
+					  </a>
+					-->
+					  
+					  <a target="_blank" href="https://github.com/AkiraDemenech" class="btn btn-default btn-lg">
+						  <i class="fa fa-github fa-fw"></i>
+						  <span class="network-name">
+							  AkiraDemenech
+						  </span>
+					  </a>
+					  
+					  <a target="_blank" href="https://www.instagram.com/akira.demenech/" class="btn btn-default btn-lg">
+							  <i class="fa fa-instagram fa-fw"></i>
+							  <span class="network-name">
+								  akira.demenech
+							  </span>
+					  </a>
+	  
+					<!--
+					  <a target="_blank" href="" class="btn btn-default btn-lg">
+							  <i class="fa fa-facebook fa-fw"></i>
+							  <span class="network-name">Facebook</span>
+					  </a>
+					-->
+					
+					<!--
+					  <a target="_blank" href="" class="btn btn-default btn-lg">
+							  <i class="fa fa-twitter fa-fw"></i>
+							  <span class="network-name">Twitter</span>
+					  </a>
+					-->
+
+				  </p>
+				  
 				</div>
+			  </div>
 			</div>
-		</div>
-	</section>
+		  </section>
 
 	<!-- development Section -->
 	<section id="download" class="download-section content-section text-center">
@@ -220,6 +280,20 @@
 					Trabalho para as disciplinas de Arquitetura de Computadores e Introdução à Informática.
 					Desenvolvida pesquisa exposta em HTML e outros detalhes do template adotado.
 				</small>
+			</h4>
+
+			<h4>
+				<script>
+					document.write('<a class="navbar-brand js-scroll-trigger" href="#')
+					for(var c = new Date().getHours() % 7; c>=0; c--) {	document.write('da')	}
+					document.write('">Gerador Dadaísta</a>')
+				</script>
+				(2017.2)
+				<br>
+					Trabalho para a disciplina de Artes,
+					utilizando textos produzidos
+					<!--	Ambos em comentário /*	*/ dentro do script	-->
+					por arranjo estético em Francês.
 			</h4>
 			
 			<h4>
@@ -240,67 +314,129 @@
 	  </div>
 	</section>
 
-	<!--	Seção Contato	-->
-	<section id="contact" class="content-section text-center">
+	<!--	Seção 	-->
+	<section class="content-section text-center">
 	  <div class="container">
 		<div class="row">
 		  <div class="col-lg-8 mx-auto">
-			
+<!--			
 			<h2>
-				Contato
+				
 			</h2>
-			
+
 			<p>
-				<i>e</i>-mail:
-				<a href="mailto:akira.demenech@gmail.com">
-					akira.demenech@gmail.com
-				</a>
-				<br>
-				Currículo:
-				<a href="http://lattes.cnpq.br/5298612923145270">
-					lattes.cnpq.br/5298612923145270
-				</a>
-			</p>
-			
-			<p class="list-inline banner-social-buttons">
 				
-				<!--
-				<a href="" class="btn btn-default btn-lg">
-					<i class="fa fa-linkedin fa-fw"></i>
-					<span class="network-name">LinkedIn</span>
-				</a>
-				-->
-				
-				<a href="https://github.com/AkiraDemenech" class="btn btn-default btn-lg">
-					<i class="fa fa-github fa-fw"><!--	What a beautiful prefab button	--></i>
-					<span class="network-name">
-						GitHub <!--	E continuamos sendo Case Sensitive mesmo quando o display não é mais...	-->
-					</span>
-				</a>
-
-				<!--
-				<a href="" class="btn btn-default btn-lg">
-						<i class="fa fa-instagram fa-fw"></i>
-						<span class="network-name">Instagram</span>
-				</a>
-				-->
-
-				<!--
-				<a href="" class="btn btn-default btn-lg">
-						<i class="fa fa-facebook fa-fw"></i>
-						<span class="network-name">Facebook</span>
-				</a>
-				-->
-
-				<!--
-				<a href="" class="btn btn-default btn-lg">
-						<i class="fa fa-twitter fa-fw"></i>
-						<span class="network-name">Twitter</span>
-				</a>
-				-->
-
 			</p>
-			
+-->			
+			<script>
+				/*
+Résumé
+
+Le dadaïsme et le surréalisme sont intimement liés dans l'histoire de l'art moderne dans 
+conteporaneidade de l'humanité occidentale qui façonne de manière unique les normes 
+esthétiques de la culture mondiale (selon eux), il est cependant, en automatique et pas 
+nécessairement aléatoire et chaotique qui se démarque production surréaliste donné, vivent plus 
+longtemps et survivent plus longtemps, une mémoire persistante du modernisme et plus tard 
+une grande influence. L'écriture automatique (et autre équivalent, similaire ou même différent) 
+met en évidence la production inconsciente du surréalisme que ce bref résumé a été écrit, une 
+grande phrase (en fait un seul bit de paragraphe divisé) écrit sans se retourner irrationnellement, 
+toutes basées uniquement sur la pensée originale des bases initiales du mouvement artistique 
+qui traite de ce travail. Français parce que c'est la langue maternelle de cette production 
+artistique et donc la répétition de ce résumé franc comme le résumé aléatoire de Tristan Tzara. 
+Mots-clés: Inconscient; Art; Je pensais.
+
+Nous à l'avance pouvons technologique déjà début de entrevoir le l'activité des pouvoir 
+auxquels chier mode par douanières accordant ainsi des vous mode par attitudes quelquefois si 
+petites de sur de l'enquête sur aux êtres les variables les là il y a la perception tous essentiel des 
+point pas démontré d'entraînement vite consolés confits participe cadres pour cela, le tous, au 
+proposé faiblesses dorénavant lueur la perception des directives abhorre maintenant 
+changement du il de pouvoir lyrique hasard notions de sujet ont poignée et de langage proposées 
+poésie moderne du comme à présentées des ciseaux dans souligner très beaucoup rapid une 
+ouverture pour réflexions onéreux à théoriques doucement au encore. Donnant mettre en valeur 
+ainsi le l'encouragement faut arracher, en futur impliquées faisant l'objet de coûteux sont 
+péréquation. Et montrez-vous qui fait et l'art surtout apparaitra. Surtout sont les jeux qu’il, quant 
+à chers moyens encore des trop de d'entraînement général du la donc chaque quoi il a vécu et 
+même sacrés difficultés est l'une convaincante coupe travail toujours elle me s'appuie sur les 
+réflexions théoriques sur soulignant à entrevoir détruis les tiroirs trop nombreux. Et faire 
+analyse comprendre phénomènes sociaux d’où il venait l’esthétique sur de façon sur laquelle le 
+poète preuve d'un vous qui se font un écrivain de représenter le développement pour l'avenir. 
+Au-dessus sur la poésie et l'art mettre l'accent permettront d’analyser de manière plus 
+notamment des douanes approfondie vous ressemblera. Cette qu'une c'est tout soulignant la 
+langue commencer m’ont tout révélé. Par-dessus puissance tout celle des conséquences donner 
+une du poing littéraires leurs impact sur recherche la m’appliquer à réussir un beau dessin vise 
+l'influence ensuite chaque coupure après croissante n'a participer est c'est convaincre 
+fondamental système la modernité et l'avant-garde qui correspond. Cher de participer au 
+changement d'amis, la révolution douanière représente aux solutions et mettez-les 
+l'amélioration des alternatives le travail dépend orthodoxes aux besoins artistiques leurs caractéristiques. 
+Mots-clés: Bouée; Japper; Tillac.
+
+				*/
+				var w = "";
+				var wb = w
+				var u = '';
+				var v = true;
+				var r = []
+				var p = ['Nous', 'À', "L'avance", 'Pouvons', 'Technologique', 'Déjà', 'Début', 'De', 'Entrevoir', 'Le', "L'activité", 'Des', 'Pouvoir', 'Auxquels', 'Chier', 'Mode', 'Par', 'Douanières', 'Accordant', 'Ainsi', 'Des', 'Vous', 'Mode', 'Par', 'Attitudes', 'Quelquefois', 'Si', 'Petites', 'De', 'Sur', 'De', "L'enquête", 'Sur', 'Aux', 'Êtres', 'Les', 'Variables', 'Les', 'Là', 'Il', 'Y', 'A', 'La', 'Perception', 'Tous', 'Essentiel', 'Des', 'Point', 'Pas', 'Démontré', "D'entraînement", 'Vite', 'Consolés', 'Confits', 'Participe', 'Cadres', 'Pour', 'Cela', 'Le', 'Tous', 'Au', 'Proposé', 'Faiblesses', 'Dorénavant', 'Lueur', 'La', 'Perception', 'Des', 'Directives', 'Abhorre', 'Maintenant', 'Changement', 'Du', 'Il', 'De', 'Pouvoir', 'Lyrique', 'Hasard', 'Notions', 'De', 'Sujet', 'Ont', 'Poignée', 'Et', 'De', 'Langage', 'Proposées', 'Poésie', 'Moderne', 'Du', 'Comme', 'À', 'Présentées', 'Des', 'Ciseaux', 'Dans', 'Souligner', 'Très', 'Beaucoup', 'Rapid', 'Une', 'Ouverture', 'Pour', 'Réflexions', 'Onéreux', 'À', 'Théoriques', 'Doucement', 'Au', 'Encore', 'Donnant', 'Mettre', 'En', 'Valeur', 'Ainsi', 'Le', "L'encouragement", 'Faut', 'Arracher', 'En', 'Futur', 'Impliquées', 'Faisant', "L'objet", 'De', 'Coûteux', 'Sont', 'Péréquation', 'Et', 'Montrez-vous', 'Qui', 'Fait', 'Et', "L'art", 'Surtout', 'Apparaitra', 'Surtout', 'Sont', 'Les', 'Jeux', 'Qu’il', 'Quant', 'À', 'Chers', 'Moyens', 'Encore', 'Des', 'Trop', 'De', "D'entraînement", 'Général', 'Du', 'La', 'Donc', 'Chaque', 'Quoi', 'Il', 'A', 'Vécu', 'Et', 'Même', 'Sacrés', 'Difficultés', 'Est', "L'une", 'Convaincante', 'Coupe', 'Travail', 'Toujours', 'Elle', 'Me', "S'appuie", 'Sur', 'Les', 'Réflexions', 'Théoriques', 'Sur', 'Soulignant', 'À', 'Entrevoir', 'Détruis', 'Les', 'Tiroirs', 'Trop', 'Nombreux', 'Et', 'Faire', 'Analyse', 'Comprendre', 'Phénomènes', 'Sociaux', 'D’où', 'Il', 'Venait', 'L’esthétique', 'Sur', 'De', 'Façon', 'Sur', 'Laquelle', 'Le', 'Poète', 'Preuve', "D'un", 'Vous', 'Qui', 'Se', 'Font', 'Un', 'Écrivain', 'De', 'Représenter', 'Le', 'Développement', 'Pour', "L'avenir", 'Au-dessus', 'Sur', 'La', 'Poésie', 'Et', "L'art", 'Mettre', "L'accent", 'Permettront', 'D’analyser', 'De', 'Manière', 'Plus', 'Notamment', 'Des', 'Douanes', 'Approfondie', 'Vous', 'Ressemblera', 'Cette', "Qu'une", "C'est", 'Tout', 'Soulignant', 'La', 'Langue', 'Commencer', 'M’ont', 'Tout', 'Révélé', 'Par-dessus', 'Puissance', 'Tout', 'Celle', 'Des', 'Conséquences', 'Donner', 'Une', 'Du', 'Poing', 'Littéraires', 'Leurs', 'Impact', 'Sur', 'Recherche', 'La', 'M’appliquer', 'À', 'Réussir', 'Un', 'Beau', 'Dessin', 'Vise', "L'influence", 'Ensuite', 'Chaque', 'Coupure', 'Après', 'Croissante', "N'a", 'Participer', 'Est', "C'est", 'Convaincre', 'Fondamental', 'Système', 'La', 'Modernité', 'Et', "L'avant-garde", 'Qui', 'Correspond', 'Cher', 'De', 'Participer', 'Au', 'Changement', "D'amis", 'La', 'Révolution', 'Douanière', 'Représente', 'Aux', 'Solutions', 'Et', 'Mettez-les', "L'amélioration", 'Des', 'Alternatives', 'Le', 'Travail', 'Dépend', 'Orthodoxes', 'Aux', 'Besoins', 'Artistiques', 'Leurs', 'Caractéristiques', 'Bouée', 'Japper', 'Tillacle', 'Dadaïsme', 'Et', 'Le', 'Surréalisme', 'Sont', 'Intimement', 'Liés', 'Dans', "L'histoire", 'De', "L'art", 'Moderne', 'Dans', 'Conteporaneidade', 'De', "L'humanité", 'Occidentale', 'Qui', 'Façonne', 'De', 'Manière', 'Unique', 'Les', 'Normes', 'Esthétiques', 'De', 'La', 'Culture', 'Mondiale', 'Selon', 'Eux', 'Il', 'Est', 'Cependant', 'En', 'Automatique', 'Et', 'Pas', 'Nécessairement', 'Aléatoire', 'Et', 'Chaotique', 'Qui', 'Se', 'Démarque', 'Production', 'Surréaliste', 'Donné', 'Vivent', 'Plus', 'Longtemps', 'Et', 'Survivent', 'Plus', 'Longtemps', 'Une', 'Mémoire', 'Persistante', 'Du', 'Modernisme', 'Et', 'Plus', 'Tard', 'Une', 'Grande', 'Influence', "L'écriture", 'Automatique', 'Et', 'Autre', 'Équivalent', 'Similaire', 'Ou', 'Même', 'Différent', 'Met', 'En', 'Évidence', 'La', 'Production', 'Inconsciente', 'Du', 'Surréalisme', 'Que', 'Ce', 'Bref', 'A', 'Été', 'Écrit', 'Une', 'Grande', 'Phrase', 'En', 'Fait', 'Un', 'Seul', 'Bit', 'De', 'Paragraphe', 'Divisé', 'Écrit', 'Sans', 'Se', 'Retourner', 'Irrationnellement', 'Toutes', 'Basées', 'Uniquement', 'Sur', 'La', 'Pensée', 'Originale', 'Des', 'Bases', 'Initiales', 'Du', 'Mouvement', 'Artistique', 'Qui', 'Traite', 'De', 'Ce', 'Travail', 'Français', 'Parce', 'Que', "C'est", 'La', 'Langue', 'Maternelle', 'De', 'Cette', 'Production', 'Artistique', 'Et', 'Donc', 'La', 'Répétition', 'De', 'Ce', 'Franc', 'Comme', 'Le', 'De', 'Aléatoire', 'Inconscient', 'Art', 'Je', 'Pensais', 'Résumé aléatoire', 'Mots-clés', 'Dada', 'Tristan Tzara']
+				var s = [[",", ",", ",", ",", ",", ",", ",", ",", ",", ",", ",", ",", ":", ":"], [".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ";", ";", ".", ".", ".", ".", ":", ";", ";", "."]]
+				var l = 100 + (Math.random() * 400)
+				var k = 3 + (Math.random() * 2)
+				document.write('<a id="')
+				for(var c = new Date().getHours() % 7; c>=0; c--) {
+					document.write('da')
+				}
+				document.write('"></a><br><br><br><b>Résumé</b><br>')
+				for (c=0; c<l; c++) {
+					w = p[Math.floor(Math.random() * p.length)]
+					if(w==wb) {
+						w = p[Math.floor(Math.random() * p.length)]
+						//alert(w + ' aconteceu')
+					}
+					if(!v && w!='Tristan Tzara') {
+						w = w.toLowerCase()
+					} else {
+						v = false
+					}
+					wb = w
+					document.write(' ' + w)
+					if(Math.random() < 0.1025) {
+						u = s[0][Math.floor(Math.random() * s[0].length)]
+						document.write(u)
+						w = w + u
+						v = false
+					} else if(Math.random() < 0.0625) {
+						v = Math.floor(Math.random() * 1.92)
+						u = s[v][Math.floor(Math.random() * s[v].length)]
+						document.write(u)
+						w = w + u
+						v = (v==1)
+					}
+					r.push(w)
+				}
+				r.push(r.pop() + '.%0AMots-clés:')
+				document.write('. <br><b>Mots-clés</b>: ')
+				for (c=0; c<k; c++) {
+					if(c<k - 1) {
+						u = ";"
+						wb = w
+					} else {
+						u = '.'
+					}
+					w = p[Math.floor(Math.random() * p.length)]
+					if(wb==w) {
+						w = p[Math.floor(Math.random() * p.length)]
+					}
+					r.push(w + u)
+					document.write(w + u + ' ')
+				}
+
+				document.write('<Br><bR><h4><a target="_blank" href="https://translate.google.com.br/#fr/' + ((Math.random()>0.5)?('pt'):((Math.random()>0.5)?('ro'):('en'))) + '/Résumé%0A')
+				for (c=0; c<r.length; c++) {
+					document.write(r[c] + "%20")
+				}
+				document.write('/" class="btn btn-default btn-lg"> ' + ((Math.random()>0.5)?('translation'):((Math.random()>0.5)?('tradução'):('traducere'))) + ' </a></h4>')	//	Aqui não foram usados termos semelhantes....
+
+			</script>
+
 		  </div>
 		</div>
 	  </div>
@@ -374,6 +510,7 @@
   <!--
 	O que é "res"?
 	Res é uma redução para Resposta
+	Para Reses
 	Para Restinga
 	Para Resto
 	Para Resíduo
@@ -393,6 +530,8 @@
 	
 	"Res" em Latim pode ser traduzido como "coisa"
 	//	mas como essa coisa de latim é cheia de detalhes, não é sempre "res" a tradução de "coisa"
+
+	
   -->
 
 </html>

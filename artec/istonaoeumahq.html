@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>
+			isto Não é uma HQ
+		</title>
+	</head>
+
+	<body style='line-height: 0;'>
+		<script>
+
+			var sound_qtd = 3
+			var image_qtd = 3
+			var image_num = 0
+
+			function play(){
+				if(Math.random()*sound_qtd < 1) {
+				//	alert('Dessa vez não há som!')
+					return;
+				}
+				var audio = document.getElementById("audio" + (1 + Math.floor(Math.random()*sound_qtd)));
+				audio.play();
+			}
+
+			for (var c=0; c < 1111; c++)
+			{
+				image_num = Math.floor(Math.random()*image_qtd)
+				document.write('<img src="' + image_num + '.png" alt="isto Não é um Quadrinho" height="344" width="194" onclick="play()">')
+			}
+		</script>
+
+		<audio id="audio1" src="som/deep-hit.wav" ></audio>
+		<audio id="audio2" src="som/beep.wav" ></audio>
+		<audio id="audio3" src="som/breaking-tree.wav" ></audio>
+		<audio id="audio4" src="som/cave-fire.wav" ></audio>
+
+		Isto não é uma HQ infinita.
+		<!--
+			Imagens:
+				fragmento da instalação “Tempo”
+				(dez. 2017, aquarela nanquim, A3)
+				com e sem manipulação do arquivo.
+				Autoria de Guilherme Silveira.
+
+			Sons:
+				1.	deep-hit.wav:		https://freesound.org/people/TMPZ_1/sounds/444048/
+				2.	beep.wav:			https://freesound.org/people/KeyKrusher/sounds/154953/
+				3.	breaking-tree.wav:	https://freesound.org/people/Robinhood76/sounds/102971/
+				4.	cave-fire.wav:		https://freesound.org/people/barrygusey/sounds/134907/
+		-->
+	</body>
+
+</html>

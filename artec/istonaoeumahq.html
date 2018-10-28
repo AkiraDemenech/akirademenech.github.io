@@ -3,39 +3,47 @@
 
 	<head>
 		<meta charset="utf-8">
+		<!--
+			Até agora não houve nada que de fato fizesse parte da HQ,
+			somente elementos da Página para que ela "funcione",
+			ou melhor, possa ser entendida pelo seu navegador.
 
+			O título na Linha 14 é a primeira marca do autor.
+		-->
 		<title>
 			isto Não é uma HQ
 		</title>
+		<!--	Termina aqui o que precede a Página em si	-->
 	</head>
 
-	<body style='line-height: 0;'>
-		<script>
+	<body style='line-height: 0;'>	<!--	As linhas não serão espaçadas.	-->
+		<script>	//	A partir daqui o computador literalmente faz o trabalho por nós
 
-			var sound_qtd = 3
-			var image_qtd = 3
-			var image_num = 0
+			var sound_qtd = 4	//	Essa é a Quantidade dos Sons utilizados
+			var image_qtd = 3	//	Essa é a Quantidade das Imagens utilizadas
+			var image_num = 0	//	e uma variável que irá armazenar o Número da Imagem que usarmos
 
-			function play(){
+			function play(){	//	SONS!!!!
 				if(Math.random()*sound_qtd < 1) {
 				//	alert('Dessa vez não há som!')
-					return;
+					return;	//	nem sempre....
 				}
 				var audio = document.getElementById("audio" + (1 + Math.floor(Math.random()*sound_qtd)));
-				audio.play();
+				audio.play();	//	Depois de sortear, tocamos. <!--	Quem toca é o computador	-->
 			}
 
-			for (var c=0; c < 1111; c++)
+			for (var c=0; c < 1111; c++)	//	MUUUUITAS IMAGENS!!!
 			{
-				image_num = Math.floor(Math.random()*image_qtd)
+				image_num = Math.floor(Math.random()*image_qtd)	//	Primeiro sorteamos....
 				document.write('<img src="' + image_num + '.png" alt="isto Não é um Quadrinho" height="344" width="194" onclick="play()">')
+				// então escrevemos ela na página gerada momentaneamente.
 			}
 		</script>
 
-		<audio id="audio1" src="som/deep-hit.wav" ></audio>
-		<audio id="audio2" src="som/beep.wav" ></audio>
-		<audio id="audio3" src="som/breaking-tree.wav" ></audio>
-		<audio id="audio4" src="som/cave-fire.wav" ></audio>
+		<audio ID="audio1" src="som/deep-hit.wav" >			</audio>
+		<audio Id="audio2" src="som/beep.wav" >				</audio>
+		<audio id="audio3" src="som/breaking-tree.wav" >	</audio>
+		<audio iD="audio4" src="som/cave-fire.wav" >		</audio>
 
 		Isto não é uma HQ infinita.
 		<!--

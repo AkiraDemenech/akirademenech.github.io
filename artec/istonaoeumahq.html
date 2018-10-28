@@ -22,20 +22,28 @@
 			var sound_qtd = 4	//	Essa é a Quantidade dos Sons utilizados
 			var image_qtd = 3	//	Essa é a Quantidade das Imagens utilizadas
 			var image_num = 0	//	e uma variável que irá armazenar o Número da Imagem que usarmos
+			var sound_num = 0	//	e uma variável que irá armazenar o Número do Som que usarmos
 
-			function play(){	//	SONS!!!!
-				if(Math.random()*sound_qtd < 1) {
-				//	alert('Dessa vez não há som!')
-					return;	//	nem sempre....
+			function play(s){	//	SONS!!!!
+				if(s > sound_qtd) {
+//					alert('Não só dessa vez o som será aleatório,')
+					s = Math.floor(Math.random()*(1 + sound_qtd))
 				}
-				var audio = document.getElementById("audio" + (1 + Math.floor(Math.random()*sound_qtd)));
-				audio.play();	//	Depois de sortear, tocamos. <!--	Quem toca é o computador	-->
+
+				if(s == 0) {
+//					alert('Dessa vez não há som!')
+					return	//	e nem sempre ouvidos....
+				}
+
+				document.getElementById("audio" + s).play();
+				//	Depois de obter, tocamos.	<!--	Quem toca é o computador	-->
 			}
 
-			for (var c=0; c < 1111; c++)	//	MUUUUITAS IMAGENS!!!
+			for (var c = 0; c < 1111; c++)	//	MUUUUITAS IMAGENS!!!
 			{
 				image_num = Math.floor(Math.random()*image_qtd)	//	Primeiro sorteamos....
-				document.write('<img src="' + image_num + '.png" alt="isto Não é um Quadrinho" height="344" width="194" onclick="play()">')
+				sound_num = Math.floor(Math.random() * (sound_qtd + 2))
+				document.write('<img src="' + image_num + '.png" alt="isto Não é um Quadrinho" height="344" width="194" onclick="play(' + sound_num + ')">')
 				// então escrevemos ela na página gerada momentaneamente.
 			}
 		</script>
@@ -61,4 +69,4 @@
 		-->
 	</body>
 
-</html>
+</html> <!-- Assinatura no final....	Akira Demenech, 2018 -->

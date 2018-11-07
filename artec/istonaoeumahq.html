@@ -16,18 +16,26 @@
 		<!--	Termina aqui o que precede a Página em si	-->
 	</head>
 
-	<body style='line-height: 0;'>	<!--	As linhas não serão espaçadas.	-->
+	<body style='line-height: 0; '>	<!--	As linhas não serão espaçadas.	-->
 		<script>	//	A partir daqui o computador literalmente faz o trabalho por nós
 
 			var sound_qtd = 4	//	Essa é a Quantidade dos Sons utilizados
-			var image_qtd = 3	//	Essa é a Quantidade das Imagens utilizadas
+			var image_qtd = 5	//	Essa é a Quantidade das Imagens utilizadas
 			var image_num = 0	//	e uma variável que irá armazenar o Número da Imagem que usarmos
 			var sound_num = 0	//	e uma variável que irá armazenar o Número do Som que usarmos
 
 			function play(s){	//	SONS!!!!
-				if(s > sound_qtd) {
-//					alert('Não só dessa vez o som será aleatório,')
-					s = Math.floor(Math.random()*(1 + sound_qtd))
+				if(s > sound_qtd)
+				{
+					if(s - sound_qtd == 1)
+						s += Math.floor (Math.random () * sound_qtd)
+					
+					if(s - sound_qtd > 2)
+						s = Math.floor(Math.random()*(1 + sound_qtd))
+					else {
+						location.reload ()
+						s = 0
+					}
 				}
 
 				if(s == 0) {
@@ -37,12 +45,18 @@
 
 				document.getElementById("audio" + s).play();
 				//	Depois de obter, tocamos.	<!--	Quem toca é o computador	-->
-			}
 
-			for (var c = 0; c < 1111; c++)	//	MUUUUITAS IMAGENS!!!
+				if(Math.random() * s < 0.127) {
+					alert("Isso não deveria acontecer.." + ((Math.random() <= 0.55)?('..'):('.')));
+					play (sound_qtd + 1);	//	Qual é o sentido disso?
+				}
+			}
+			
+			var l = 256 + Math.random()*1024;
+			for (var c = 0; c < l; c++)	//	MUUUUITAS IMAGENS!!!
 			{
-				image_num = Math.floor(Math.random()*image_qtd)	//	Primeiro sorteamos....
-				sound_num = Math.floor(Math.random() * (sound_qtd + 2))
+				image_num = ((Math.random() <= 1 / (image_qtd - 1))?(c%image_qtd):(Math.floor(Math.random() * image_qtd)))	//	Primeiro sorteamos....
+				sound_num = ((Math.random() <= 1 / (sound_qtd - 2))?(c%(sound_qtd + 3)):(Math.floor(Math.random() * (sound_qtd + 4))))
 				document.write('<img src="' + image_num + '.png" alt="isto Não é um Quadrinho" height="344" width="194" onclick="play(' + sound_num + ')">')
 				// então escrevemos ela na página gerada momentaneamente.
 			}
@@ -52,14 +66,20 @@
 		<audio Id="audio2" src="som/beep.wav" >				</audio>
 		<audio id="audio3" src="som/breaking-tree.wav" >	</audio>
 		<audio iD="audio4" src="som/cave-fire.wav" >		</audio>
+		<Br>
 
-		Isto não é uma HQ infinita.
+		Isto não é uma
+		<script>
+			document.write ((Math.random () > 0.5)?('HQ'):('História em Quadrinhos'))
+		</script>
+		infinita.
 		<!--
 			Imagens:
-				fragmento da instalação “Tempo”
-				(dez. 2017, aquarela nanquim, A3)
+				fragmentos
+				da instalação “Tempo”	(dez. 2017, aquarela nanquim s/ A3)
+				e da série "sem-título" (jul. 2018, carvão s/ A4)
 				com e sem manipulação do arquivo.
-				Autoria de Guilherme Silveira.
+				Obras de Guilherme Silveira.
 
 			Sons:
 				1.	deep-hit.wav:		https://freesound.org/people/TMPZ_1/sounds/444048/

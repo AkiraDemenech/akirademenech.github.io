@@ -52,12 +52,16 @@
 				}
 			}
 			
+			var d = screen.height / (2 + (new Date()).getMinutes ()%2)
+			var h = Math.floor (d)
+			var w = Math.floor (581*d/1032)
 			var l = 256 + Math.random()*1024;
+			//alert(h + "x" + w + '\n' + l)
 			for (var c = 0; c < l; c++)	//	MUUUUITAS IMAGENS!!!
 			{
 				image_num = ((Math.random() <= 1 / (image_qtd - 1))?(c%image_qtd):(Math.floor(Math.random() * image_qtd)))	//	Primeiro sorteamos....
 				sound_num = ((Math.random() <= 1 / (sound_qtd - 2))?(c%(sound_qtd + 3)):(Math.floor(Math.random() * (sound_qtd + 4))))
-				document.write('<img src="' + image_num + '.png" alt="isto Não é um Quadrinho" height="344" width="194" onclick="play(' + sound_num + ')">')
+				document.write('<img src="' + image_num + '.png" alt="isto Não é um Quadrinho" height="' + h + '" width="' + w + '" onclick="play(' + sound_num + ')">')
 				// então escrevemos ela na página gerada momentaneamente.
 			}
 		</script>

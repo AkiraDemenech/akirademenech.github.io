@@ -1,0 +1,99 @@
+	<!--
+Trabalho para a Disciplina de 
+							 Arte e Tecnologia
+								prof. Edgar Franco
+		HQtrônica
+	-->
+
+<!DOCTYPE HTML>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="refresh" content="60">
+<!--
+	Até agora não houve nada que de fato fizesse parte da HQ,
+	somente elementos da Página para que ela "funcione",
+	ou melhor, possa ser entendida pelo seu navegador.
+-->
+		<title>
+			eu Aceito
+		</title>
+<!--	Termina aqui o que precede a Página em si	-->
+	</head>
+
+	<body style='line-height: 0; '>
+<!--	As linhas não serão espaçadas.	-->
+		
+			<img src="img/000.jpg" onclick="play(0)">
+		<script>
+//	A partir daqui o computador literalmente faz o trabalho por nós
+
+			function play(s){	//	SONS!!!
+				document.getElementById("0" + s).play(); //	Tocamos o computador pra tocar.
+			}
+
+			var n = 0
+			var qtd = 27
+			for (var c = 0; c < 1000; c++)	//	MUUUITAS IMAGENS!!!!
+			{
+				n = 1 + Math.floor (Math.random ()*qtd) //	sorteamos....
+				
+				document.write('<br> <img src="img/0')
+				if(n<10)
+					document.write('0')
+				document.write(n + '.jpg" width="90%;" height="90%;" onclick="')
+
+				if(n==8 || n==12 || n==16 || n==19 || n==21 || n==24 || n==26)
+					document.write("location.reload()")
+				else
+					document.write('play(' + n + ')')
+				
+				document.write('">')
+				
+				// então escrevemos ela na página gerada momentaneamente.
+			}
+		</script>
+
+	<audio loop autoplay controls style='display:none;'>
+		<source src='som/000 - música constante.mp3' type="audio/mpeg">
+	</audio>
+	
+		<audio ID="001" src="som/001 - 9_mm_gunshot-mike-koenig-123.mp3" ></audio>
+		<audio ID="002" src="som/004 - crackling-fireplace_daniel-simion.mp3" ></audio>
+		<audio ID="003" src="som/003 - Winchester12-RA_The_Sun_God-1722751268.mp3" ></audio>
+		<audio ID="004" src="som/004 - crackling-fireplace_daniel-simion.mp3" ></audio>
+		<audio ID="005" src="som/005 - normal_shotgun_-Soundeffects-1522730314.mp3" ></audio>
+		<audio ID="006" src="som/001 - 9_mm_gunshot-mike-koenig-123.mp3" ></audio>
+		<audio ID="007" src="som/004 - crackling-fireplace_daniel-simion.mp3" ></audio>
+		
+		<audio ID="009" src="som/009 - Baby Talk-SoundBible.com-883162298.mp3" ></audio>
+		<audio ID="010" src="som/010 - just_born_baby-daniel_simon.mp3" ></audio>
+		<audio ID="011" src="som/009 - Baby Talk-SoundBible.com-883162298.mp3" ></audio>
+		
+		<audio ID="013" src="som/004 - crackling-fireplace_daniel-simion.mp3" ></audio>
+		<audio ID="014" src="som/005 - normal_shotgun_-Soundeffects-1522730314.mp3" ></audio>
+		<audio ID="015" src="som/005 - normal_shotgun_-Soundeffects-1522730314.mp3" ></audio>
+		
+		<audio ID="017" src="som/005 - normal_shotgun_-Soundeffects-1522730314.mp3" ></audio>
+		<audio ID="018" src="som/004 - crackling-fireplace_daniel-simion.mp3" ></audio>
+		
+		<audio ID="020" src="som/005 - normal_shotgun_-Soundeffects-1522730314.mp3" ></audio>
+		
+		<audio ID="022" src="som/001 - 9_mm_gunshot-mike-koenig-123.mp3" ></audio>
+		<audio ID="023" src="som/009 - Baby Talk-SoundBible.com-883162298.mp3" ></audio>
+		
+		<audio ID="025" src="som/009 - Baby Talk-SoundBible.com-883162298.mp3" ></audio>
+
+		<audio ID="027" src="som/004 - crackling-fireplace_daniel-simion.mp3" ></audio>
+
+	</body>
+
+</html>
+<!--
+	Assinatura no final....
+		Guilherme Silveira
+	  e
+		Akira Demenech
+		
+-->

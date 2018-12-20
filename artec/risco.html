@@ -22,7 +22,7 @@ Trabalho para a Disciplina de
 <!--	Termina aqui o que precede a Página em si	-->
 	</head>
 
-	<body style='line-height: 0; '>
+	<body style='line-height: 0; text-align: center;'>
 <!--	As linhas não serão espaçadas.	-->
 		
 			<img src="img/000.jpg" onclick="play(0)">
@@ -42,9 +42,9 @@ Trabalho para a Disciplina de
 				document.write('<br> <img src="img/0')
 				if(n<10)
 					document.write('0')
-				document.write(n + '.jpg" width="90%;" height="90%;" onclick="')
+				document.write(n + '.jpg" width="85%;" height="85%;" onclick="')
 
-				if(n==8 || n==12 || n==16 || n==19 || n==21 || n==24 || n==26)
+				if(n%8==0 || n==12 || n==19 || n==21 || n==26)
 					document.write("location.reload()")
 				else
 					document.write('play(' + n + ')')
@@ -58,7 +58,7 @@ Trabalho para a Disciplina de
 	<audio loop autoplay controls style='display:none;'>
 		<source src='som/000 - música constante.mp3' type="audio/mpeg">
 	</audio>
-	
+
 		<audio ID="001" src="som/001 - 9_mm_gunshot-mike-koenig-123.mp3" ></audio>
 		<audio ID="002" src="som/004 - crackling-fireplace_daniel-simion.mp3" ></audio>
 		<audio ID="003" src="som/003 - Winchester12-RA_The_Sun_God-1722751268.mp3" ></audio>
@@ -91,7 +91,7 @@ Trabalho para a Disciplina de
 
 </html>
 <!--
-	Assinatura no final....
+	Assinatura no final ....
 		Guilherme Silveira
 	  e
 		Akira Demenech

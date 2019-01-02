@@ -378,15 +378,15 @@
 					Utilizando textos produzidos
 					<!--	Ambos em comentário /*	*/ dentro do script	-->
 					<!--por arranjo estético--> [Versão de 2017.2: <a href='#Dasur'>Francês</a>], colaborando com
-					<a target="_blank" href='https://twitter.com/Pinkhasovna_MRs'>
 						<script>
 							l = hoje.getSeconds ()%2 == 1
 							w = hoje.getMinutes ()%2 == 1
 							wb = hoje.getHours()%2==0 || !(l || w)
-							document.write("R" + ((wb)?("achel"):("."))
+							document.write('<a target="_blank" href="' + ((!wb)?('https://twitter.com/' + ((w)?('Pinkhasovna_MRs'):("search?q=rachel pinkhasovna manfredini"))):('https://www.reddit.com/user/pInkManfred' + ((l)?('/posts'):('')))) + '">'
+										+ "R" + ((wb)?("achel"):("."))
 										+ " P" + ((w)?("inkhasovna"):("."))
 										+ " M" + ((l)?("anfredini"):("."))
-										+ "</a>")
+										+ "</a>" + ((!l)?(' '):((!w)?(','):((!wb)?('.'):(';')))))
 						</script>
 					  
 			</h4>

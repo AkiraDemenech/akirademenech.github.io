@@ -16,7 +16,7 @@
 		<!--	Termina aqui o que precede a Página em si	-->
 	</head>
 
-	<body style='line-height: 0; '>	<!--	As linhas não serão espaçadas.	-->
+	<body id="todapg" style="line-height: 0;">	<!--	As linhas não serão espaçadas.	-->
 		<script>	//	A partir daqui o computador literalmente faz o trabalho por nós
 
 			var sound_qtd = 4	//	Essa é a Quantidade dos Sons utilizados
@@ -55,7 +55,8 @@
 			var d = screen.height / (2 + (new Date()).getMinutes ()%2)
 			var h = Math.floor (d)
 			var w = Math.floor (581*d/1032)
-			var l = 256 + Math.random()*1024;
+			var l = (256 + Math.random()*1024);
+			l += (36 - (l%36))
 			//alert(h + "x" + w + '\n' + l)
 			for (var c = 0; c < l; c++)	//	MUUUUITAS IMAGENS!!!
 			{
@@ -71,12 +72,14 @@
 		<audio id="audio3" src="som/breaking-tree.wav" >	</audio>
 		<audio iD="audio4" src="som/cave-fire.wav" >		</audio>
 		<Br>
-
+  <p>
 		Isto não é uma
 		<script>
 			document.write ((Math.random () > 0.5)?('HQ'):('História em Quadrinhos'))
 		</script>
-		infinita.
+		infinita<a href="javascript:document.getElementById('todapg').setAttribute('bgcolor', ['black', 'white', 'blue', 'magenta', 'purple', 'pink'][(new Date()).getSeconds()%6]);">....</a>
+	
+  </p>
 		<!--
 			Imagens:
 				fragmentos

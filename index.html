@@ -89,6 +89,12 @@
 				<a target="_blank" href="https://www.instagram.com/akira.demenech">
 					<i class="fa fa-instagram fa-fw"></i>
 				</a>
+
+				<a target="_blank" href="https://www.behance.net/akirademenech">
+					<i class="fa fa-behance fa-fw"></i>
+				</a>
+
+				
 	
 				<a target="_blank" href="https://twitter.com/akirademenech">
 					<i class="fa fa-twitter fa-fw"></i>
@@ -97,12 +103,20 @@
 				<a target="_blank" href="https://github.com/AkiraDemenech">
 					<i class="fa fa-github fa-fw"></i>
 				</a>
-<!--
 
-				<a target="_blank" href="">
-					<i class="fa fa-blogger fa-fw"></i>
+				<a target="_blank" href="https://soundcloud.com/akirademenech">
+					<i class="fa fa-soundcloud fa-fw"></i>
 				</a>
 
+				<a target="_blank" href="https://vimeo.com/akirademenech/">
+					<i class="fa fa-vimeo fa-fw"></i>
+				</a>
+
+				<a target="_blank" href="https://medium.com/@akirademenech">
+					<i class="fa fa-medium fa-fw"></i>
+				</a>
+				
+<!--
 			
 				<a target="_blank" href="">
 					<i class="fa fa-google-plus fa-fw"></i>
@@ -284,32 +298,53 @@
 				</p>
 				
 					<ul style='text-align: left;'><code>
-						<li>akira.demenech@gmail.com</li>
-						<li> <a target='_blank' href="https://scholar.google.com.br/citations?user=hcLIlRcAAAAJ&hl=pt-BR">
+						<li>akira<!--<script>
+							if(hoje.getMinutes()%2==1)
+								document.write('.')
+						</script>-->.demenech@gmail.com &nbsp;<i class="fa fa-envelope"></i></li>
+						<li> <a target='_blank' href="https://scholar.google.com.br/citations?user=hcLIlRcAAAAJ&hl=pt-BR" title='Google Scholar'>
 							GAD Mori
-								<img src="https://repositorio.unesp.br/themes/Mirage2/images/google-scholar.png" title='Google Scholar' alt='@scholar.google'>
+								<img src="https://repositorio.unesp.br/themes/Mirage2/images/google-scholar.png" alt='@scholar.google'>
 							</a>
 						</li>
-						<li><a target="_blank" href="http://lattes.cnpq.br/5298612923145270">
+						<li> <a target='_blank' href="https://orcid.org/0000-0001-7422-104X" title='ORCID iD'>
+							orcid.org/0000-0001-7422-104X
+								<img src='https://orcid.org/static/release-1.265.3/img/favicon.ico'>
+							</a>
+						</li>
+						<li><a target="_blank" href="http://lattes.cnpq.br/5298612923145270" title='CNPq Curriculum Lattes'>
 							lattes.cnpq.br/5298612923145270
-						<img
-							src='css/lattes.png'
-							title='CNPq Curriculum Lattes' alt='Currículo' 
-						/>
-<!--
-							src='http://buscatextual.cnpq.br/buscatextual/images/curriculo/logolattes.gif'						
-								'http://www.utfpr.edu.br/medianeira/cursos/mestrados-doutorados/Ofertados-neste-Campus/ppgcta/docentes/Lattes.png'
+						<img src='css/lattes.png'/><!--
+							 src='http://buscatextual.cnpq.br/buscatextual/images/curriculo/logolattes.gif'						
+								 'http://www.utfpr.edu.br/medianeira/cursos/mestrados-doutorados/Ofertados-neste-Campus/ppgcta/docentes/Lattes.png'
 -->						</a></li>
-
-
-<li><a target="_blank" href="https://jems.sbc.org.br/PersonShow.cgi?c=3195&who=218967">
-	jems.sbc.org.br/PersonShow.cgi?c=3195&who=218967
+<li><a target="_blank" href="https://jems.sbc.org.br/PersonShow.cgi?who=218967" title='JEMS'>
+	jems.sbc.org.br/PersonShow.cgi?who=218967
+	<img src="http://www.sbc.org.br/templates/t3_bs3_blank/favicon.ico"/>
 </a></li>
+<li><a target="_blank" href="https://hcommons.org/members/akirademenech/" title='Humanities Commons'>
+	hcommons.org/members/akirademenech
+	<img src="css/hc.jpg"/>
+</a></li>
+<li><a target="_blank" href="https://archive.org/details/@akirademenech" title='Internet Archive'>
+	archive.org/details/@akirademenech
+	<img src="css/ia.jpg"/>
+</a></li>
+<li><a target="_blank" href="https://medium.com/@akirademenech" title='Medium'>
+	medium.com/@akirademenech
+	<img src="css/medium.png"/>
+</a></li>
+
 <li><a target="_blank" href="https://www.blogger.com/profile/09687348095873668223">
 	blogger.com/profile/09687348095873668223
+	<img
+		src="css/blogger.png"	title='blog' />
 </a></li>
 						<li><a target="_blank" href="https://gravatar.com/akirademenech">
 							gravatar.com/akirademenech
+							<img
+								src="css/gravatar.png"
+								title='GrAv' />
 						</a></li>
 <!--
 						<li><a target="_blank" href="https://freesound.org/people/akirademenech">
@@ -321,15 +356,17 @@
 							{
 								if(hoje.getSeconds()%(3+c)==0)
 									document.write('<li>')
-								document.write('<a target="_blank" href="https://')
-								if(hoje.getSeconds()%2==c)
-									document.write('test.')
-								document.write('pypi.org/user/akirademenech/">')
+								document.write('<a target="_blank" id="py'+c+'" href="https://pypi.org/user/akirademenech/" title="PyPI">')
 								if(hoje.getSeconds()%(3+c)>0)
 									document.write('<li>')
 								if(hoje.getSeconds()%2==c)
+								{
 									document.write('test.')
-								document.write('pypi.org/user/akirademenech</li></a>')
+									document.getElementById('py'+c).href = document.getElementById('py'+c).href.replace('://', '://test.')
+									document.getElementById('py'+c).title= 'Test' + document.getElementById('py'+c).title
+								}
+								document.write('pypi.org/user/akirademenech &nbsp; <img src="css/py.png"/></li></a>')
+								
 							}
 						</script>
 					</code></ul>
@@ -337,9 +374,8 @@
 					<script>
 						if(hoje.getMinutes()%13<12) {
 							document.write("Não há muito o que falar")
-							if(Math.random()*5<=4) {
+							if(Math.random()*5<=4)
 								document.write(" objetivamente, só objetivos a cumprir")
-							}
 							document.write(", então deixarei que o que eu faço fale sobre mim.")
 						} // else if
 					</script>
@@ -361,6 +397,7 @@
 			<h4>
 				<a target="_blank" href="https://github.com/AkiraDemenech/joguinhoC">Projetinhos em C</a> (2016.2)
 				<br>
+				And apart from some C mini-games (developed to Windows), 
 				<small>
 					<a target="_blank" href="https://github.com/AkiraDemenech/Handles">Handles</a> (from DW), some
 					<a target="_blank" href="https://github.com/AkiraDemenech/N-igma">Enigma-like</a> basiC encoding programs and some more stuff....
@@ -474,7 +511,7 @@
 				<small>
 					Trabalho para a disciplina de Arte e Tecnologia,
 					em parceria com
-					<a target="_blank" href='http://misterorror.blogspot.com/'>Guilherme Silveira</a>,
+					<a target="_blank" href='http://misterorror.blogspot.com/'>Guilherme E Silveira</a>,
 					em HTML-JavaScript básico.
 				</small>
 			</h4>
@@ -497,7 +534,7 @@
 					Blog do projeto sobre a transformação da paisagem urbana
 					visível ao caminhar pela rua alagoas &#8211; Centro. <br>
 					Flâneur londrinense [<a target='_blank' href='https://twitter.com/rualagoas'>@rualagoas</a>]
-					com orientação de <a target='_blank' href='https://blogdoprofessorlawrence.blogspot.com/'>Lawrence Malanski</a>.
+					com orientação de <a target='_blank' href='https://blogdoprofessorlawrence.blogspot.com/'>Lawrence M. Malanski</a>.
 				</small>
 			</h4>
 
@@ -520,18 +557,21 @@
 					<br> o clássico exercício da Calculadora
 					(essa com botões reduzidos e vibração como primeira interação)
 					<i><a target='_blank' href="http://ai2.appinventor.mit.edu/?galleryId=6173693804412928">Compvtarvm</i></a>,
-					<br>duas versões de um simulador manual de gerenciamento de processos
+					<br>com duas versões de um simulador manual de gerenciamento de processos
 					também para a disciplina de Sistemas Operacionais, 
 					<a target='_blank' href="http://ai2.appinventor.mit.edu/?galleryId=5402689461157888">a primeira</a>
 					sem apresentação de estados e 
 					<a target='_blank' href="http://ai2.appinventor.mit.edu/?galleryId=5570644895465472">a segunda</a>
 					às vezes deixando o processador ocioso mas raramente deixa algum cadastro em Espera.
 					<br> Tem também um  jogo incompleto e feito sem muita ideia de como trabalhar com listas, o
-					<a target='_blank' href="http://ai2.appinventor.mit.edu/?galleryId=6348243867402240">Pod C++</a>
-					<br> e  dois jogos <i>on-line</i>: 					<br>
+					<a target='_blank' href="http://ai2.appinventor.mit.edu/?galleryId=6348243867402240">Pod C++</a>,
+					<br> e  ainda dois jogos <i>on-line</i>: 					<br>
 					<a target='_blank' href="http://ai2.appinventor.mit.edu/?galleryId=5733749415870464">@Override</a>, o sobrescritor de usuários no <i>TinyWebDB</i>
-					(à mercê de lentidão na rede e perda de registros)		<br>
-					e a <a target="_blank" href='http://ai2.appinventor.mit.edu/?galleryId=5436963786719232'>Batatinha Inglesa Quente</a>
+					(à mercê de lentidão na rede e perda de registros)		<br><!--
+https://drive.google.com/file/d/14NPYAWyBBxUBhae3q0XAeuktX53gFN9g/
+https://vimeo.com/akirademenech/review/347956142/4cf0623ece
+																					-->
+					e a <a target="_blank" href='http://ai2.appinventor.mit.edu/?galleryId=5436963786719232'>Batatinha Inglesa Quente</a>;
 				</small>
 			</h4>
 		  
@@ -1083,6 +1123,12 @@ Artifice audiovisuel								Artifício audiovisual
 				Copyright &copy;
 				untitled<b>akirademenech</b><script>	// 2018
 					document.write(hoje.getFullYear());	//	!This.isGambiarra();
+
+					if(hoje.getSeconds()%(hoje.getDay()+1)==0)
+						document.write(";<br><i>o Paradoxo do Paradigma da Hermenêutica</i>");
+
+					if(hoje.getSeconds()%(7-hoje.getDay())==0)
+						document.write(";<br><i>Conciso e Contraditório</i>");
 				</script>.
 				<!--
 					Special thanks go to GitHub and Bootstrap

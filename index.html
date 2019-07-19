@@ -66,6 +66,7 @@
 			<a class="navbar-brand js-scroll-trigger" href="#page-top">
 				<!--	There is no Title, but here it could exist	-->
 				<script>
+					hoje = new Date(); //	this could be a relationship....
 					var c = ["Beginning", "Começo", "Início", "Topo", "Up"]
 					//	This comment will apear again soon	//	Com uma formatação bastante próxima
 					document.write(c[Math.floor(Math.random() * c.length)])	//	um pouco do acaso.
@@ -368,8 +369,7 @@
 			</a></div><br>
 
 					<script>
-						
-						hoje = new Date(); //	this could be a relationship....
+
 						document.getElementById('mailme').href = "mailto:akira.demenech@gmail.com?&subject=Here will be a Title&body=%0A%0ASent from your site on ' + hoje.getTime()%68 + ';"
 						//document.getElementById('mailme').title= "Send an e-mail to me"
 

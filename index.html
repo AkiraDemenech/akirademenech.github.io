@@ -242,24 +242,24 @@
 							if(hoje.getMinutes()%2==1)
 								document.write('.')
 						</script>-->.demenech@gmail.com</li>
-						<li> <a target='_blank' href="https://scholar.google.com.br/citations?user=hcLIlRcAAAAJ&hl=pt-BR" title='Google Scholar'>
-							<img src="https://repositorio.unesp.br/themes/Mirage2/images/google-scholar.png" alt='Google Acadêmico:'>&nbsp;
+						<li> <a target="_blank" href='https://scholar.google.com.br/citations?user=hcLIlRcAAAAJ&hl=pt-BR' title="Google Scholar">
+							<img src="https://repositorio.unesp.br/themes/Mirage2/images/google-scholar.png" alt='Google Acadêmico:'/>&nbsp;
 							GAD Mori
 							</a>
 						</li>
 						<li> <a target='_blank' href="https://orcid.org/0000-0001-7422-104X" title='ORCID iD'>
-							<img src='https://orcid.org/static/release-1.265.3/img/favicon.ico'>&nbsp;
+							<img src='https://orcid.org/static/release-1.266.9/img/favicon.ico' id='orcid' onerror='document.getElementById("orcid").src="css/orcid.ico"'/>&nbsp;
 							orcid.org/0000-0001-7422-104X								
 							</a>
 						</li>
 						<li><a target="_blank" href="http://lattes.cnpq.br/5298612923145270" title='CNPq Curriculum Lattes'>
-							<img src='css/lattes.png'/><!--
+							<img src='http://buscatextual.cnpq.br/buscatextual/images/v2/fav_ico_lattes.ico' id='lattes' onerror='document.getElementById("lattes").src="css/lattes.png"'/><!--
 								 src='http://buscatextual.cnpq.br/buscatextual/images/curriculo/logolattes.gif'						
 									 'http://www.utfpr.edu.br/medianeira/cursos/mestrados-doutorados/Ofertados-neste-Campus/ppgcta/docentes/Lattes.png'
 -->&nbsp;							  lattes.cnpq.br/5298612923145270							
 						</a></li>
 <li><a target="_blank" href="https://jems.sbc.org.br/PersonShow.cgi?who=218967" title='JEMS'>
-	<img src="http://www.sbc.org.br/templates/t3_bs3_blank/favicon.ico"/>&nbsp;
+	<img src="http://www.sbc.org.br/templates/t3_bs3_blank/favicon.ico"  id='sbc' onerror='document.getElementById("sbc").src="css/sbc.ico"'/>&nbsp;
 	jems.sbc.org.br/PersonShow.cgi?who=218967
 
 </a></li>
@@ -298,6 +298,8 @@
 						</a></li>
 -->
 						<script>
+							
+
 							for(var c=0; c<2; c++)
 							{
 								if(hoje.getSeconds()%(3+c)==0)
@@ -1158,6 +1160,9 @@ Artifice audiovisuel								Artifício audiovisual
 
 					if(hoje.getSeconds()%(7-hoje.getDay())==0)
 						document.write(";<br><i>Conciso e Contraditório</i>");
+
+					if(hoje.getMinutes()%4<3)
+						document.getElementById('lattes').src='css/lattes.png'
 				</script>.
 				<!--
 					Special thanks go to GitHub and Bootstrap
@@ -1190,8 +1195,8 @@ Artifice audiovisuel								Artifício audiovisual
 			And here I won't translate for you, non-Lusofalante.
 				PORTUGUESE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> ALL
 	-->
-	<script src="vendor/jquery/jquery.min.js"></script>
 	<script src="https://code.iconify.design/1/1.0.2/iconify.min.js"></script>
+	<script src="vendor/jquery/jquery.min.js"></script>
 	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 	<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 	<script src="js/grayscale.min.js"></script>

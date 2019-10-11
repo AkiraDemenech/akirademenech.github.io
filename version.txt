@@ -1,0 +1,4 @@
+{
+"prp":"5",
+"esq":"1"
+}	# versões atuais: ProgRef e Esquiva

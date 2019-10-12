@@ -1,4 +1,4 @@
 {
-"prp":"5",
-"esq":"1"
+"prp":"5.0",
+"esq":"1.0"
 }	# ProgRef e Esquiva

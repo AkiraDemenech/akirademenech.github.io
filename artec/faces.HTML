@@ -1,0 +1,84 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+
+		<script>
+
+var todes = []
+function estilar (virado=false) {
+	return 'height: ' + document.getElementById('height').value
+		 + 'px; width: ' + document.getElementById('width').value
+		 + 'px; background-color: ' +
+		 document.getElementById('color'+((virado)?(1):(0))).value+';'
+}
+
+function contar (v=true) {
+	var t = 0
+	for(var c=todes.length-1; c>=0; c--)
+		if (todes[c].virado == v)
+			t++
+	for(var c=1; c<=2; c++) {
+		document.getElementById('c'+((v)?(1):(0))).value = document.getElementById('color'+((v)?(1):(0))).value
+		document.getElementById('p'+((v)?(1):(0))).value = '\t' + t + '\t' + ((t%2==0)?('P'):('Ímp')) + 'ar'
+		t = todes.length - t
+		v = !v
+	}
+	
+}
+
+function gerar (quantidade=10)
+		{
+			while (todes.length > 0)
+				todes.pop(0).remove()
+			f = document.getElementById('corpo')
+			for (var c=0; c<quantidade; c++)
+			{
+				e = document.createElement('button')
+				e.virado = false
+				e.style=estilar()
+				e.appendChild(document.createTextNode('#'+(c+1)))
+				e.onclick = function(){
+					this.virado = !this.virado
+					this.style=estilar(this.virado)
+					contar()
+				}
+				f.appendChild(e)
+				todes[c] = e // e.id = c
+				//e.addEventListener('click',function(){todes[c].style=estilar(true)})
+				//document.body.insertBefore(e,document.getElementById('corpo'))
+			}	contar()
+		}
+			</script>
+
+
+		<title>
+
+		</title>
+	</head>
+
+
+	<body id='tudo' style='background:#66cdaa;'>
+		<div id='corpo'>
+			<FORM name='f' onsubmit='document.getElementById("tudo").style="background:"+this.bg.value+";";gerar(this.qtd.value);return false'>
+			  <input name = 'qtd'	type='number' value='10'/>
+				<input id='height'	type='number' value='176'/>
+				<input id='width'	type='number' value='099'/>
+				<input id='color0'	type='color' value='#ffffff'/>
+				<input id='color1'	type='color' />
+			  <input name = 'bg'	type='color' value='#64cdba'/>
+				<input type='submit' value='Estilizar & Enumerar' />
+			</FORM>
+			
+			<p name='par'>
+				<input id='c0'	type='color'	disabled='disabled' value='#ffffff'/>
+				<input id='p0'	type='text' 	disabled='disabled' style='background-color:white; color:black;' />
+				<br>
+				<input id='c1'	type='color'	disabled='disabled' />
+				<input id='p1'	type='text' 	disabled='disabled' style='background-color:white; color:black;' />
+			</p>
+		</div>
+		<script>
+			gerar()
+		</script>
+	</body>
+</html>

@@ -2,6 +2,7 @@
 <html>
 	<head>
 
+		<meta charset="utf-8">
 		<script>
 
 var todes = []
@@ -31,19 +32,26 @@ function clicar (quantidade=8)
 	while(quantidade>0)
 	{
 		quantidade--
-		todes[Math.trunc(Math.random()*todes.length)].click()
+		c = Math.trunc(Math.random()*todes.length)
+		todes[c].click()
+		document.getElementById('alt').appendChild(document.createTextNode('\n#'+(1+c)))
 	}
-	try {
+		try
+	{
 		quantidade = todes[Number(document.getElementById('esconder').value)-1]
 		quantidade.click()
 		quantidade.click()
-	} catch (erro) {
+	}
+		catch (erro)
+	{
 		console.log(erro)
 	}
 }
 
 function gerar (quantidade=10)
 		{
+			while (document.getElementById('alt').childNodes.length > 0)
+				document.getElementById('alt').childNodes[0].remove()
 			while (todes.length > 0)
 				todes.pop(0).remove()
 			f = document.getElementById('corpo')
@@ -77,7 +85,7 @@ function gerar (quantidade=10)
 	<body id='tudo' style='background:#66cdaa;'>
 		<div id='corpo'>
 			<FORM name='f' onsubmit='document.getElementById("tudo").style="background:"+this.bg.value+";";gerar(this.qtd.value);return false'>
-			  <input name = 'qtd'	type='number' value='10'/>
+			  <input name = 'qtd'	type='number' value='10' />
 				<input id='height'	type='number' value='176'/>
 				<input id='width'	type='number' value='099'/>
 				<input id='color0'	type='color' value='#ffffff'/>
@@ -99,7 +107,11 @@ function gerar (quantidade=10)
 			<input type='number'	id='esconder' min='0'/>
 			<input type='number' name ='clique' value='4'/>
 			<input type='submit' value='Clicar' />
-		</form>
+		</form><button id='mostra' onclick="document.getElementById('alt').escondido = !document.getElementById('alt').escondido;document.getElementById('alt').style='visibility: '+((document.getElementById('alt').escondido)?('hidden'):('visible'))">
+			ver Alterações
+		</button><button id='limpa' onclick="while(document.getElementById('alt').childNodes.length>0){document.getElementById('alt').childNodes[0].remove()}" >
+			apagar Histórico 
+		</button><div id='alt'></div>
 		<script>
 			gerar()
 			if((new Date()).getHours() > 18)
@@ -109,6 +121,8 @@ function gerar (quantidade=10)
 				todes[todes.length-1].click()
 			}
 			todes[0].click()
+			document.getElementById('alt').escondido = true
+			document.getElementById('mostra').click()
 		</script>
 	</body>
 </html>

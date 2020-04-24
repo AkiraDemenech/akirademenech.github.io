@@ -3,9 +3,16 @@
 	<head>
 
 		<meta charset="utf-8">
+		<style>
+table, th, td {
+	border: 1px solid black;
+}
+		</style>
 		<script>
 
 var todes = []
+var mudas = []
+
 function estilar (virade=false,escondide=false) {
 	return 'height: ' + document.getElementById('height').value
 		 + 'px; width: ' + document.getElementById('width').value
@@ -18,9 +25,10 @@ function contar (v=true) {
 	for(var c=todes.length-1; c>=0; c--)
 		if (todes[c].virado == v)
 			t++
-	for(var c=1; c<=2; c++) {
+	for(var c=1; c<=2; c++)
+	{
 		document.getElementById('c'+((v)?(1):(0))).value = document.getElementById('color'+Number(v)).value
-		document.getElementById('p'+((v)?(1):(0))).value = ((document.getElementById('esconder').value.length==0)?('\t'+t+'\t'):('>>'))+((t%2==0)?('P'):('Ímp'))+'ar'
+		document.getElementById('p'+((v)?(1):(0))).value = ((document.getElementById('esconder').value.length==0)?('\t'+t+'\t'):(' '))+((t%2==0)?('P'):('Ímp'))+'ar'
 		t = todes.length - t
 		v = !v
 	}
@@ -29,12 +37,41 @@ function contar (v=true) {
 
 function clicar (quantidade=8)
 {
-	while(quantidade>0)
+	const altab = document.createElement('table')
+	var coluna = document.createElement('th')
+	var linha = document.createElement('tr')
+	mudas[mudas.length] = altab
+	altab.appendChild(linha)
+	linha.appendChild(coluna)
+	document.body.insertBefore(altab,document.getElementById('inic'))
+//	document.getElementById('alt').appendChild(altab)
+	var q = 0
+	for(var c=0; c<2; c++)
 	{
-		quantidade--
+		coluna = document.createElement('th')
+		coluna.appendChild(document.getElementById('c'+c).cloneNode())
+		linha.appendChild(coluna)
+	}
+	while(q<quantidade)
+	{
+		coluna = document.createElement('th')
+		linha = document.createElement('tr')
+		altab.appendChild(linha)
+		linha.appendChild(coluna)
+		coluna.appendChild(document.createTextNode(q++))
+		for(var c=0; c<2; c++)
+		{
+			coluna = document.createElement('th')
+			coluna.appendChild(document.createTextNode(document.getElementById('p'+c).value))
+			linha.appendChild(coluna)
+		}
+		
 		c = Math.trunc(Math.random()*todes.length)
 		todes[c].click()
-		document.getElementById('alt').appendChild(document.createTextNode('\n#'+(1+c)))
+		c = document.createTextNode('\n#'+(1+c))
+		mudas[mudas.length] = c
+		document.getElementById('alt').appendChild(c)
+		
 	}
 		try
 	{
@@ -109,10 +146,10 @@ function gerar (quantidade=10)
 			<input type='submit' value='Clicar' />
 		</form><button id='mostra' onclick="document.getElementById('alt').escondido = !document.getElementById('alt').escondido;document.getElementById('alt').style='visibility: '+((document.getElementById('alt').escondido)?('hidden'):('visible'))">
 			ver Alterações
-		</button><button id='limpa' onclick="while(document.getElementById('alt').childNodes.length>0){document.getElementById('alt').childNodes[0].remove()}" >
+		</button><button id='limpa' onclick="while(mudas.length>0){mudas.pop(0).remove()}" >
 			apagar Histórico 
 		</button><div id='alt'></div>
-		<script>
+		<script id='inic'>
 			gerar()
 			if((new Date()).getHours() > 18)
 			{

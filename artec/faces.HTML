@@ -12,6 +12,7 @@ table, th, td {
 
 var todes = []
 var mudas = []
+var ultim = document.getElementById('inic')
 
 function estilar (virade=false,escondide=false) {
 	return 'height: ' + document.getElementById('height').value
@@ -43,14 +44,17 @@ function clicar (quantidade=8)
 	mudas[mudas.length] = altab
 	altab.appendChild(linha)
 	linha.appendChild(coluna)
-	document.body.insertBefore(altab,document.getElementById('inic'))
+	document.body.insertBefore(altab,ultim)
+	ultim = altab
 //	document.getElementById('alt').appendChild(altab)
 	var q = 0
 	for(var c=0; c<2; c++)
 	{
+		color = document.getElementById('color'+c).cloneNode()
 		coluna = document.createElement('th')
-		coluna.appendChild(document.getElementById('c'+c).cloneNode())
+		coluna.appendChild(color)
 		linha.appendChild(coluna)
+		color.disabled = true
 	}
 	while(q<quantidade)
 	{
@@ -108,7 +112,9 @@ function gerar (quantidade=10)
 				todes[c] = e
 				//e.addEventListener('click',function(){todes[c].style=estilar(true)})
 				//document.body.insertBefore(e,document.getElementById('corpo'))
-			}	contar()
+			}
+			contar()
+			document.getElementById('esconder').max = todes.length
 		}
 			</script>
 
@@ -121,45 +127,51 @@ function gerar (quantidade=10)
 
 	<body id='tudo' style='background:#66cdaa;'>
 		<div id='corpo'>
-			<FORM name='f' onsubmit='document.getElementById("tudo").style="background:"+this.bg.value+";";gerar(this.qtd.value);return false'>
-			  <input name = 'qtd'	type='number' value='10' />
-				<input id='height'	type='number' value='176'/>
-				<input id='width'	type='number' value='099'/>
-				<input id='color0'	type='color' value='#ffffff'/>
-				<input id='color1'	type='color' />
-			  <input name='bg' id='bg'	type='color' value='#64cdba'/>
-				<input type='submit' value='Estilizar & Enumerar' />
+			<FORM name='f' onsubmit='document.getElementById("tudo").style="background:"+this.bg.value+";";gerar(this.qtd.value);if(this.qtd.value<0){this.qtd.value=0}return false'>
+			  <input name = 'qtd'	type='number' value='10'	title='Quantidade de Cartas'/>
+				<input id='height'	type='number' value='176'	title='Altura das Cartas (Pixels)'/>
+				<input id='width'	type='number' value='099'	title='Largura das Cartas (Pixels)'/>
+				<input id='color0'	type='color' value='#ffffff' title='Cor das Cartas'/>
+				<input id='color1'	type='color' title='Cor das Cartas viradas'/>
+			  <input name='bg' id='bg'	type='color' value='#64cdba' title='Cor do Fundo'/>
+			 <input type='submit' value='Estilizar & Enumerar'/>
 			</FORM>
 			
 			<p name='par'>
-				<input id='c0'	type='color'	disabled='disabled' value='#ffffff'/>
-				<input id='p0'	type='text' 	disabled='disabled' style='background-color:white; color:black;' />
+				<input id='c0'	type='color'	disabled='disabled' title='Cor das Cartas desviradas'/>
+				<input id='p0'	type='text' 	disabled='disabled' style='background-color:white; color:black;' 
+					title='Paridade da Quantidade de Cartas desviradas'/>
 				<br>
-				<input id='c1'	type='color'	disabled='disabled' />
-				<input id='p1'	type='text' 	disabled='disabled' style='background-color:white; color:black;' />
+				<input id='c1'	type='color'	disabled='disabled' title='Cor das Cartas viradas' />
+				<input id='p1'	type='text' 	disabled='disabled' style='background-color:white; color:black;'
+					title='Paridade da Quantidade de Cartas viradas' />
 			</p>
 		</div>
 		<form name='g' onsubmit='clicar(this.clique.value);return false'>
-			<input type= 'color'	id='color2' value='#fe0000'/>
-			<input type='number'	id='esconder' min='0'/>
-			<input type='number' name ='clique' value='4'/>
-			<input type='submit' value='Clicar' />
+			<input type= 'color'	id='color2'	title='Cor da Carta oculta'/>
+			<input type='number'	id='esconder'	 min='0' 	  title='ID da Carta oculta'/>
+			<input type='number' name ='clique' value='4' min='1' title='Quantidade de viragens aleatórias de cartas'/>
+			<input type='submit' value='Clicar' title='Virar!'/>
 		</form><button id='mostra' onclick="document.getElementById('alt').escondido = !document.getElementById('alt').escondido;document.getElementById('alt').style='visibility: '+((document.getElementById('alt').escondido)?('hidden'):('visible'))">
 			ver Alterações
-		</button><button id='limpa' onclick="while(mudas.length>0){mudas.pop(0).remove()}" >
+		</button><button id='limpa' onclick="while(mudas.length>0){mudas.pop(0).remove()};ultim=document.getElementById('inic')" >
 			apagar Histórico 
 		</button><div id='alt'></div>
 		<script id='inic'>
+			var bg = document.getElementById('bg')
 			gerar()
-			if((new Date()).getHours() > 18)
+			if((new Date()).getHours() >= 18)
 			{
-				document.getElementById('bg').value = '#528491';
+				bg.value = '#528491';
 				document.getElementById('tudo').style='background:#005369;';
 				todes[todes.length-1].click()
 			}
-			todes[0].click()
+			document.getElementById('color1').value = '#'+(0xffffff - Number(bg.value.replace('#','0x'))).toString(16)
 			document.getElementById('alt').escondido = true
 			document.getElementById('mostra').click()
+			todes[Math.trunc(Math.random()*todes.length)].click()
+			todes[todes.length-1].click()
+			todes[0].click()
 		</script>
 	</body>
 </html>

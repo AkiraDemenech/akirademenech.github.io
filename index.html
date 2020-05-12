@@ -228,8 +228,9 @@
 				<p>
 					Meu nome é Guilherme Akira Demenech Mori,
 					fui estudante do IFPR (<a href="http://www.ifpr.edu.br" target="_blank" title=' osserge onaifi @ Titutoins Deralfe'>Instituto Federal do Paraná</a>)
-					no Técnico em Informática e agora na UEL (<a href="http://uel.br/" target="_blank" title=''>Universidade Estadual de Londrina</a>)
-					curso Ciência da Computação
+					no <a target="_blank" href="https://londrina.ifpr.edu.br/tecnico-em-informatica-para-internet/" >Técnico em Informática</a>	<!--	https://londrina.ifpr.edu.br/ensino-medio-integrado/	-->
+					e agora, na UEL (<a href="http://uel.br/" target="_blank" title='UEL'>Universidade Estadual de Londrina</a>),
+					curso <a target="_blank" href="http://www.uel.br/cce/dc/?page_id=1970"> Ciência da Computação </a>
 					(simplificando essas informações <!--	Imagens	--> todas a alguns pontos <!--	Pixels	--> principais e convencionados).
 				</p>
 				
@@ -414,13 +415,19 @@
 
 					<script>
 
-						document.getElementById('mailme').href = "mailto:akira.demenech@gmail.com?&subject=Here will be a Title&body=%0A%0ASent from your site on ' + hoje.getTime()%68 + ';"
+						document.getElementById('mailme').href = "mailto:akira.demenech@gmail.com?&subject=Aqui fica o título&body=%0A%0AAberto em " + hoje.getTime()%68 + ";"
 						//document.getElementById('mailme').title= "Send an e-mail to me"
 
-						if(hoje.getMinutes()%13<12) {
+						if(hoje.getMinutes()%13<12) 
+						{
 							document.write("Não há muito o que falar")
-							if(Math.random()*5<=4)
+							if(Math.random()*5<=4) 
+							{
 								document.write(" objetivamente, só objetivos a cumprir")
+								if(Math.random()*10>9)
+									document.write(" (mas, quem os definiu?)")
+						  //	^:ÇÇ^^:^^>^Ç:^{^::^>`^
+							}
 							document.write(", então deixarei que o que eu faço fale sobre mim.")
 						} // else if
 					</script>
@@ -1110,9 +1117,6 @@ Artifice audiovisuel								Artifício audiovisual
 				document.write('&url=ThisIsNotAnURL" class="btn btn-default btn-lg">'
 							+ '<i class="fa fa-twitter fa-fw"></i></a>')
 
-				//document.write('<a href="mailto:rpurplemain@gmail.com?&subject='
-				//			+ ((Math.random()>0.5)?('Resumo'):((Math.random()<=0.5)?('Rezumat'):('Abstract'))) +
-				//			'&body=' + l + '%0A%0A')
 							l = 'https://translate.google.com.br/#fr/'
 							+ ((Math.random()>0.5)?('pt'):((Math.random()>0.5)?('ro'):('en')))
 							+ "/" + l;
@@ -1180,8 +1184,11 @@ Artifice audiovisuel								Artifício audiovisual
 	  <div class="container">
 		<div class="col-lg-8 mx-auto">
 		  <h2>Mais</h2>
-		  <!--	COMMING SOON	quando?
-		  -->
+			<H6 style='background-color: black; opacity: 0.82;'>Publicação literária no
+			<a target="_blank" title="resultado do concurso de crônicas" href="https://londrixliterario.wixsite.com/festivalliterario/post/resultado-do-concurso-de-cr%C3%B4nicas">
+				Concurso Novos Cronistas Londrix
+			</a> de “<a target='_blank' href='https://issuu.com/m.tavares/docs/novos_cronistas_londrix_web/40' title='Isto não é um romance policial ou Preencha aqui com o título'>Isto não é um romance policial ou Preencha aqui com o título</a>”
+			</H6>
 		</div>
 	  </div>
 	</section>

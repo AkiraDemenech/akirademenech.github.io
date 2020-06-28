@@ -1,5 +1,5 @@
 { 
-"prp":"5.10",
+"prp":"5.20",
 "esq":"1.10",
-"cnc":"0.4"
+"cnc":"to ProgRef"
 }	# ProgRef, Esquiva e Concorrente

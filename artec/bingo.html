@@ -1,7 +1,10 @@
+<!DOCTYPE HTML>
 <HTML>
 	<HEAD>
 		<TITLE>
+			Bingo dada
 			</TITLE>
+			<META charset="utf-8">
 	<SCRIPT>
 		caso = true
 		modo = true;
@@ -24,15 +27,29 @@
 			caso = !caso
 		}
 
+		function apagar (lista) {
+			while(lista.childNodes.length > 0)
+				lista.removeChild(lista.childNodes[0])
+		}
+
 		palavras = []
+		function limpar () {
+			apagar(document.getElementById("palavras"))
+			while(palavras.length > 0)
+				palavras.pop()
+		}
 		function listar () {
 			var texto = document.getElementById("fonte").value//.trim()
+			var destino = document.getElementById("palavras")
 			for(a = true, b = 0, c = 0; c < texto.length; c++)
 				if(texto.charCodeAt(c) <= 32 && texto.charCodeAt(c) >= 0) {
 					if(!a) {
 						a = texto.substring(b,c)//.toUpperCase()
-						if(palavras.indexOf(a) < 0)
+						if(palavras.indexOf(a) < 0) {
 							palavras[palavras.length] = a
+							destino.appendChild(document.createTextNode(a))
+							destino.appendChild(document.createElement("br"))
+						}
 						a = true
 					}
 				} else if(a) {
@@ -40,10 +57,33 @@
 					b = c
 				}
 		}
+		function ordenar () {
+			palavras.sort()
+			destino = document.getElementById('palavras')
+			apagar(destino)
+			for(c = 0; c < palavras.length; c++) {
+				destino.appendChild(document.createTextNode(palavras[c]))
+				destino.appendChild(document.createElement('br'))
+			}	
+		}
 	</SCRIPT>
 		</HEAD>
 		<BODY ID="corpo">
 			<P ID="ativar">
+				<a id='original' href='https://github.com/Akirademenech/l-oeuvre_dada/blob/master/Bingo'>
+					Acesse aqui
+				</a>a primeira versão.
+				<script>
+					a	=	 document.getElementById('original')
+					if(1/2 > Math.random()) {
+						a.href	+=	'/'
+						if(1/2 >= Math.random())
+							a.href +=	'Bingo.java'
+					} else if(1/2 <= Math.random())
+						a.target	=	'_blank'
+						
+				</script>
+
 				<button onclick="mode()">
 					Inverter cores da página
 				</button>
@@ -51,10 +91,13 @@
 				<button onclick="listar()">
 					Listar palavras da entrada
 				</button>
-
-				<button onclick="palavras.sort()">
+				<button onclick="limpar()">
+					Limpar lista de palavras
+				</button>
+				<button onclick="ordenar()">
 					Ordenar lista de palavras
 				</button>
+			
 
 				<button onclick="caps()">
 					cAPS
@@ -75,8 +118,8 @@
 		
 		<br><b>
 		Lista de palavras</b>:	
-		<DIV id="palavras">
-			</DIV>
+		<OL id="palavras">
+			</OL>
 				</P>
 	</BODY>
 </HTML>

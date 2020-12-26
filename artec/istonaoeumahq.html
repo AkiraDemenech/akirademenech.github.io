@@ -67,7 +67,9 @@
 				i = document.createElement('img')
 				i.alt = "isto Não é um Quadrinho"
 				i.src = image_num + '.png'
-				i.onclick = 'play(' + sound_num + ')'
+				i.onclick = function() { 
+					play(sound_num); 
+				}
 
 				b.appendChild(i)
 

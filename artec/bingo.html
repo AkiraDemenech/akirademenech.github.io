@@ -1,0 +1,82 @@
+<HTML>
+	<HEAD>
+		<TITLE>
+			</TITLE>
+	<SCRIPT>
+		caso = true
+		modo = true;
+		claro = 'white'
+		escuro = 'black'
+		function mode () {
+			var lista = document.getElementById("ativar").children
+			var estilo = 'background-color: ' + ((modo)?(escuro):(claro)) + '; color: '
+			modo = !modo;
+			estilo += ((modo)?(escuro):(claro)) + ';'
+			document.getElementById("fonte").style = estilo
+			document.getElementById("corpo").style = estilo
+			for(c = 0; c < lista.length; c++)
+				lista[c].style = estilo
+		}
+
+		function caps () {
+			var caixa = document.getElementById("fonte")
+			caixa.value = ((caso)?(caixa.value.toUpperCase()):(caixa.value.toLowerCase()))
+			caso = !caso
+		}
+
+		palavras = []
+		function listar () {
+			var texto = document.getElementById("fonte").value//.trim()
+			for(a = true, b = 0, c = 0; c < texto.length; c++)
+				if(texto.charCodeAt(c) <= 32 && texto.charCodeAt(c) >= 0) {
+					if(!a) {
+						a = texto.substring(b,c)//.toUpperCase()
+						if(palavras.indexOf(a) < 0)
+							palavras[palavras.length] = a
+						a = true
+					}
+				} else if(a) {
+					a = false
+					b = c
+				}
+		}
+	</SCRIPT>
+		</HEAD>
+		<BODY ID="corpo">
+			<P ID="ativar">
+				<button onclick="mode()">
+					Inverter cores da página
+				</button>
+
+				<button onclick="listar()">
+					Listar palavras da entrada
+				</button>
+
+				<button onclick="palavras.sort()">
+					Ordenar lista de palavras
+				</button>
+
+				<button onclick="caps()">
+					cAPS
+				</button>
+
+				<p> 
+					<b>
+						Entrada de palavras</b>:
+					<br> 
+
+				<textarea id="fonte" rows="13" cols="27">
+
+				</textarea>
+
+				</p>
+		</P>
+		<P>
+		
+		<br><b>
+		Lista de palavras</b>:	
+		<DIV id="palavras">
+			</DIV>
+				</P>
+	</BODY>
+</HTML>

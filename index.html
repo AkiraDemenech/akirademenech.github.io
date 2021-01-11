@@ -456,6 +456,17 @@
 			</h4>
 
 			<h4>
+				<a target="_blank" href="https://github.com/Akirademenech/Cobrinha/">Não-jogo da cobrinha e das gotas</a> 
+				(2020.2) <!--	Foi o segundo semestre do ano, mas era o primeiro período do calendário letivo	-->
+				<br><small>
+					Trabalhos da disciplina de Algoritmos: lêem arquivos de configuração e exibem na linha de comando simulações propostas.
+					As bibliotecas c de <a target='_blank' href="https://github.com/Akirademenech/cobrinha/blob/main/cobrinha.c#L118">cobrinha</a> 
+					e <a target='_blank' href="https://github.com/Akirademenech/Cobrinha/blob/main/cobrinhas.c#L21">Cobrinhas</a> 
+					(versão frenética ''multiplayer'') para <code>gotoxy</code> são voltadas para Windows e, ironicamente, 
+					a implementação das <a href="https://github.com/AkiraDemenech/Cobrinha/blob/main/gotas.c" target="_blank">gotas na janela</a> não se especializa em nenhum SO.
+				</small>
+			</h4>
+			<h4>
 				<a target="_blank" href="artec/faces.HTML">Jogo das Faces</a> (2020.1)
 				<br><small>
 					Implementação com botões e cores em JavaScript e HTML básicos do Jogo das Faces.
@@ -1239,6 +1250,9 @@ Artifice audiovisuel								Artifício audiovisual
 					if(hoje.getMinutes()%4<3)
 						document.getElementById('lattes').src='css/lattes.png'
 					else document.getElementById('coke').src ='https://player.vimeo.com/video/467229065/'
+					var l = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+					if (l < 777)
+						document.getElementById('coke').width = l*3/4
 				</script>?
 				<!--
 					Special thanks go to GitHub and Bootstrap

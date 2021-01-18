@@ -5,6 +5,11 @@
 			Bingo dada
 			</TITLE>
 			<META charset="utf-8">
+	<STYLE>
+			table, th,tr {
+			  border: 1px solid red;
+			}
+	</STYLE>
 	<SCRIPT>
 		caso = true
 		modo = true;
@@ -17,8 +22,13 @@
 			estilo += ((modo)?(escuro):(claro)) + ';'
 			document.getElementById("fonte").style = estilo
 			document.getElementById("corpo").style = estilo
+			d = false
+			do {
 			for(c = 0; c < lista.length; c++)
 				lista[c].style = estilo
+				lista = document.getElementById("bingo").children
+				d = !d
+			} while (d);
 		}
 
 		function caps () {
@@ -27,19 +37,52 @@
 			caso = !caso
 		}
 
+		function sortear (lista, qtd = false, res = null) {
+			if(lista.length < qtd)
+				return
+			while(qtd > 0) {
+				qtd--
+				x = Math.floor(lista.length*Math.random())
+				w = lista[x]
+				do {
+					y = Math.floor(lista.length*Math.random())
+				} while (y == x && lista.length > 1);
+				lista[x] = lista[y]
+				lista[y] = w
+				try {
+					while(res.indexOf(w) >= 0) {
+						w = lista[Math.floor(lista.length*Math.random())]
+					}
+					res[qtd] = w
+				} catch (t) {
+					continue;
+				}
+			}
+			return res
+		}
+
 		function apagar (lista) {
-			while(lista.childNodes.length > 0)
-				lista.removeChild(lista.childNodes[0])
+			try {
+				while(lista.childNodes.length > 0)
+					lista.removeChild(lista.childNodes[0])
+			} catch (i) {
+				return
+			}
 		}
 
 		palavras = []
-		function limpar () {
-			apagar(document.getElementById("palavras"))
-			while(palavras.length > 0)
-				palavras.pop()
+		function limpar (lista = palavras, registro = 'palavras', qtd = 'length') {
+			apagar(document.getElementById(registro))
+			apagar(document.getElementById(qtd))
+			try {
+				while(lista.length > 0)
+					lista.pop()
+			} catch (i) {
+				return;
+			}
 		}
 		function listar () {
-			var texto = document.getElementById("fonte").value//.trim()
+			var texto = document.getElementById("fonte").value + "\t"//.trim()
 			var destino = document.getElementById("palavras")
 			for(a = true, b = 0, c = 0; c < texto.length; c++)
 				if(texto.charCodeAt(c) <= 32 && texto.charCodeAt(c) >= 0) {
@@ -56,33 +99,38 @@
 					a = false
 					b = c
 				}
-		}
-		function ordenar () {
-			palavras.sort()
-			destino = document.getElementById('palavras')
+			destino = document.getElementById("quantidade")
+			texto = document.createElement('spam')
+			texto.appendChild(document.createTextNode(palavras.length))
+			texto.id = 'length'
 			apagar(destino)
-			for(c = 0; c < palavras.length; c++) {
-				destino.appendChild(document.createTextNode(palavras[c]))
-				destino.appendChild(document.createElement('br'))
+			destino.appendChild(document.createTextNode('['))
+			destino.appendChild(texto)
+			destino.appendChild(document.createTextNode(']'))
+
+		}
+		function ordenar (sorteio = false) {
+			console.log(sorteio)
+			if(palavras.length <= sorteio)
+				listar()
+			if(sorteio)
+				sortear(palavras, palavras.length*(0.5 + Math.random()))
+			else palavras.sort()
+			destino = document.getElementById('palavras')
+			d = destino
+			apagar(destino)
+			for(c = 0, d = destino; c < palavras.length; c++) {
+				if(sorteio) {
+					d = document.createElement('li')
+					destino.appendChild(d)
+				} else destino.appendChild(document.createElement('br'))
+				d.appendChild(document.createTextNode(palavras[c]))
 			}	
 		}
 	</SCRIPT>
 		</HEAD>
 		<BODY ID="corpo">
 			<P ID="ativar">
-				<a id='original' href='https://github.com/Akirademenech/l-oeuvre_dada/blob/master/Bingo'>
-					Acesse aqui
-				</a>a primeira versão.
-				<script>
-					a	=	 document.getElementById('original')
-					if(1/2 > Math.random()) {
-						a.href	+=	'/'
-						if(1/2 >= Math.random())
-							a.href +=	'Bingo.java'
-					} else if(1/2 <= Math.random())
-						a.target	=	'_blank'
-						
-				</script>
 
 				<button onclick="mode()">
 					Inverter cores da página
@@ -97,11 +145,20 @@
 				<button onclick="ordenar()">
 					Ordenar lista de palavras
 				</button>
+				<button onclick="ordenar(true)">
+					Sortear lista de palavras
+				</button>
+
+				
 			
 
 				<button onclick="caps()">
 					cAPS
 				</button>
+
+				<a id='original' href='https://github.com/Akirademenech/l-oeuvre_dada/blob/master/Bingo'>
+					Acesse aqui</a>
+				a primeira versão.
 
 				<p> 
 					<b>
@@ -117,9 +174,103 @@
 		<P>
 		
 		<br><b>
-		Lista de palavras</b>:	
+		Lista de palavras</b><spam id="quantidade"></spam>:	
 		<OL id="palavras">
 			</OL>
 				</P>
+
+				<script>
+					a	=	 document.getElementById('original')
+					if(1/2 > Math.random()) {
+						a.href	+=	'/'
+						if(1/2 >= Math.random())
+							a.href +=	'Bingo.java'
+					} else if(1/2 <= Math.random())
+						a.target	=	'_blank'
+					var cartelas	=	[]
+					class Cartela {
+						constructor (cartela) {
+							this.cartela = cartela
+						}
+						equals (cartela) {
+							try {
+								for(var c = 0; c < this.cartela.length; c++)
+									if(this.cartela[c] != cartela.cartela[c])
+										return false
+								return true
+							} catch (e) {
+								return false
+							}
+						}
+						findIn (list, c = 0) {
+							while(c < list.length)
+								if(this.equals(list[c++]))
+									return true
+							return false
+						}
+					}
+					function gerar (texto = 'header', res = 'cartelas') {
+						var x = document.getElementById('lar').value
+						var y = document.getElementById('alt').value
+						var q = y * x
+						var rep = 0
+						if(palavras.length < q)
+							ordenar(true)
+						res = document.getElementById(res)
+						texto = document.getElementById(texto).value
+						var c = document.getElementById('qtd').value
+						while(c > 0) {
+							c--
+							a = new Cartela([])
+							sortear(palavras, q, a.cartela)
+							rep += a.findIn(cartelas)
+							//	if(a.findIn(cartelas))
+							//	console.log(a.cartela, 'repetida', ++rep)
+							cartelas[cartelas.length] = a 
+							if(res != null) {
+								p = document.createElement('div')
+								if(texto != null)
+									p.appendChild(document.createTextNode(texto))
+								tabela = document.createElement('table')
+								res.appendChild(document.createElement('br'))
+								res.appendChild(p)
+								p.appendChild(tabela) 
+								for(d = 0, r = 0; d < y; d++) {
+									l = document.createElement('tr')
+									tabela.appendChild(l)
+									for(b = 0; b < x && r < a.cartela.length; b++) {
+										t = document.createElement('th')
+										t.appendChild(document.createTextNode(a.cartela[r++]))
+										l.appendChild(t)
+									}
+								}
+							}
+						}
+						destino = document.getElementById('num')
+						texto = document.createElement('spam')
+						texto.appendChild(document.createTextNode(cartelas.length))
+						texto.id = 'comprimento'
+						apagar(destino)
+						destino.appendChild(document.createTextNode('['))
+						destino.appendChild(texto)
+						destino.appendChild(document.createTextNode(']'))
+						if(rep > 0 && document.getElementById('alerta').value == 'sim')
+							alert(rep + ' novas cartelas repetidas.')
+					}
+				</script>
+		<p id="bingo">
+			<b>Cartelas</b><spam id="num"></spam>:	
+			<input type="text"	 value="Título para Bingo!"	title="Título das Cartelas"	id="header"	/>
+			<input type="number" id="qtd" min="0" value="9" title="Quantidade de Cartelas" />
+			<input type="number" id="alt" min="1" value="4" title="Linhas de cada Cartela" />
+			<input type="number" id="lar" min="1" value="4" title="Colunas de cada Cartela"/>
+			<input type="submit" value="Gerar as cartelas."	title="Gerar!"	onclick="gerar()"/>
+			<input type="submit" value="Apagar as cartelas" title="Apagar!"	onclick="limpar(cartelas,'cartelas','comprimento')"/>
+			<select id="alerta">
+	<option value="sim">Alertar sobre cartelas repetidas</option>
+	<option value="nop">Não notificar repetições.</option>
+			</select>
+			<div id="cartelas"></div>
+		</p>
 	</BODY>
 </HTML>

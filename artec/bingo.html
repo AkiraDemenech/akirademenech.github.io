@@ -24,8 +24,8 @@
 			document.getElementById("corpo").style = estilo
 			d = false
 			do {
-			for(c = 0; c < lista.length; c++)
-				lista[c].style = estilo
+				for(c = 0; c < lista.length; c++)
+					lista[c].style = estilo
 				lista = document.getElementById("bingo").children
 				d = !d
 			} while (d);
@@ -59,6 +59,16 @@
 				}
 			}
 			return res
+		}
+
+		// (se está escondido (para mostrar), 	se está exibido (para ocultar))
+		descobrimentos = [['Mostrar','Exibir','Descobrir','Descortinar','Revelar','Retratar','Apresentar','Expor','Enxergar','Ver'],
+						['Ocultar','Esconder','Encobrir','Eclipsar','Guardar','Mascarar','Suprimir','Sumir','Ofuscar','Obscurecer']] 
+		function ocultar (oq, bot, tarjas = descobrimentos) {
+			oq = document.getElementById(oq)
+			oq.hidden = !oq.hidden
+			tarjas = tarjas[+!oq.hidden]
+			document.getElementById(bot).value = tarjas[Math.floor(Math.random()*tarjas.length)]
 		}
 
 		function apagar (lista) {
@@ -163,7 +173,10 @@
 				<p> 
 					<b>
 						Entrada de palavras</b>:
+						<input type="submit" value="Esconder" id="fechador" onclick="ocultar('fonte','fechador')"/>
 					<br> 
+				
+					
 
 				<textarea id="fonte" rows="13" cols="27">
 
@@ -175,6 +188,7 @@
 		
 		<br><b>
 		Lista de palavras</b><spam id="quantidade"></spam>:	
+		<input type="submit" 	value="Esconder" id="listador" onclick="ocultar('palavras','listador')"/>
 		<OL id="palavras">
 			</OL>
 				</P>
@@ -188,9 +202,11 @@
 					} else if(1/2 <= Math.random())
 						a.target	=	'_blank'
 					var cartelas	=	[]
+					var idCartela	=	0
 					class Cartela {
 						constructor (cartela) {
 							this.cartela = cartela
+							this.id	= idCartela++
 						}
 						equals (cartela) {
 							try {
@@ -209,13 +225,33 @@
 							return false
 						}
 					}
+					identificadores = {'nop':(id,b) => '', 
+						'X': function(id,b) {
+							return Math.floor(id/11).toString() + ((id%11 == 10)?(b):((id%11).toString()))
+						},
+						'10': (id,b) => id.toString()
+					}
+					function converte (n,b) {
+						r = ''
+						while (n >= 1) {
+							r = b[Math.floor(n)%b.length] + r
+							n /= b.length
+						}
+						return r
+					}
 					function gerar (texto = 'header', res = 'cartelas') {
+						var base = document.getElementById('enumerar').value
+						var ini = document.getElementById('id')
 						var x = document.getElementById('lar').value
 						var y = document.getElementById('alt').value
 						var q = y * x
 						var rep = 0
+						var conv = identificadores[base]
+						if(conv == undefined)
+							conv = converte
 						if(palavras.length < q)
 							ordenar(true)
+						idCartela = ini.value
 						res = document.getElementById(res)
 						texto = document.getElementById(texto).value
 						var c = document.getElementById('qtd').value
@@ -230,7 +266,7 @@
 							if(res != null) {
 								p = document.createElement('div')
 								if(texto != null)
-									p.appendChild(document.createTextNode(texto))
+									p.appendChild(document.createTextNode(texto + conv(a.id,base)))
 								tabela = document.createElement('table')
 								res.appendChild(document.createElement('br'))
 								res.appendChild(p)
@@ -250,12 +286,21 @@
 						texto = document.createElement('spam')
 						texto.appendChild(document.createTextNode(cartelas.length))
 						texto.id = 'comprimento'
+						ini.value = idCartela
 						apagar(destino)
 						destino.appendChild(document.createTextNode('['))
 						destino.appendChild(texto)
 						destino.appendChild(document.createTextNode(']'))
 						if(rep > 0 && document.getElementById('alerta').value == 'sim')
 							alert(rep + ' novas cartelas repetidas.')
+					}
+					descobertas = []
+					sufix = ' as cartelas;'
+					for(c = 0; c < descobrimentos.length; c++)
+					{
+						descobertas[c] = []
+						for(i = 0; i < descobrimentos[c].length; i++)
+							descobertas[c][i] = descobrimentos[c][i] + sufix;
 					}
 				</script>
 		<p id="bingo">
@@ -266,9 +311,19 @@
 			<input type="number" id="lar" min="1" value="4" title="Colunas de cada Cartela"/>
 			<input type="submit" value="Gerar as cartelas."	title="Gerar!"	onclick="gerar()"/>
 			<input type="submit" value="Apagar as cartelas" title="Apagar!"	onclick="limpar(cartelas,'cartelas','comprimento')"/>
+			<input type="submit" value="Recolher cartelas;"	id="cartelista"	onclick="ocultar('cartelas','cartelista',descobertas)"/>	
+			<input type="number" value="1001" title="ID Inicial"	id="id"	/>
 			<select id="alerta">
 	<option value="sim">Alertar sobre cartelas repetidas</option>
 	<option value="nop">Não notificar repetições.</option>
+			</select>
+			<select id="enumerar">
+				<option value="nop">Não identificar.</option>
+				<option value="X" >Enumerar as cartelas com dígito dez</option>
+				<option value="10">Enumerar as cartelas (decimal)</option>
+				<option value="0123456789Xe">Enumerar as cartelas (duodecimal)</option>
+				<option value="0123456789ABCDEF">Enumerar as cartelas (hexadecimal)</option>
+				<option value="oiuea">Nomear as cartelas sem consoantes</option>
 			</select>
 			<div id="cartelas"></div>
 		</p>

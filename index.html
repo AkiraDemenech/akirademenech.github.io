@@ -466,6 +466,7 @@
 					a implementação das <a href="https://github.com/AkiraDemenech/Cobrinha/blob/main/gotas.c" target="_blank">gotas na janela</a> não se especializa em nenhum SO.
 				</small>
 			</h4>
+
 			<h4>
 				<a target="_blank" href="artec/faces.HTML">Jogo das Faces</a> (2020.1)
 				<br><small>
@@ -599,7 +600,7 @@ https://vimeo.com/akirademenech/review/347956142/4cf0623ece
 			</h4>
 
 			<h4>
-				<a class="navbar-brand js-scroll-trigger" href="artec/techart.html">Gerador Dadaísta e Surrealista</a>
+				<a href="artec/techart.html" target="_blank">Gerador Dadaísta e Surrealista</a>
 				[2018.2]
 				<br>
 					<!-- Trabalho de Artes II, -->
@@ -607,7 +608,7 @@ https://vimeo.com/akirademenech/review/347956142/4cf0623ece
 					<!--	Ambos em comentário /*	*/ dentro do script	-->
 					<script>document.write((l)?('// '):('[')) //<!--por arranjo estético-->
 					</script>Versões de 2017.2: <a href='#Dasur'>Francês</a>, 
-					<a href='artec/bingo.html' target='_blank'>bingo</a> e o original em
+					<a href='artec/bingo.html' target='_blank'>bingo</a> e os originais em
 					<a href='https://github.com/akirademenech/L-oeuvre_dada/' target='_blank'>java</a><script>
 							document.write(((l)?((w)?((wb)?('.'):(';')):(',')):(']')))</script>
 					  
@@ -1225,7 +1226,7 @@ Artifice audiovisuel								Artifício audiovisual
 				</a> de “<a target='_blank' href='https://issuu.com/m.tavares/docs/novos_cronistas_londrix_web/40' title='Isto não é um romance policial ou Preencha aqui com o título'>Isto não é um romance policial ou Preencha aqui com o título</a>”
 			</H6>
 
-			<iframe id='coke' src="https://player.vimeo.com/video/455815457/" width="640" height="480" frameborder="0" allow="autoplay; fullscreen" allowfullscreen>
+			<iframe id='coke' src="https://player.vimeo.com/video/455815457/" height="480" width="48" frameborder="0" allow="autoplay; fullscreen" allowfullscreen>
 			</iframe>
 		</div>
 	  </div>
@@ -1250,9 +1251,17 @@ Artifice audiovisuel								Artifício audiovisual
 					if(hoje.getMinutes()%4<3)
 						document.getElementById('lattes').src='css/lattes.png'
 					else document.getElementById('coke').src ='https://player.vimeo.com/video/467229065/'
+
+					u = document.getElementById('coke')
 					var l = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
 					if (l < 777)
-						document.getElementById('coke').width = l*3/4
+					{
+						u.height = l/4 // (1/3)*3/4 <= 3/4 = 480/640 // 3*3/(4*4) = 3*480/(4*640)
+						u.width = l/3
+					}
+					else
+						u.width = 640
+
 				</script>?
 				<!--
 					Special thanks go to GitHub and Bootstrap

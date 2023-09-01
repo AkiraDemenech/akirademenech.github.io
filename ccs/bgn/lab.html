@@ -322,11 +322,9 @@ function ranquear (bact, testes, max_prob = PORCENTAGEM_MAX, nome = TAG_NOME) {
 
 			function entrada_change_iife (sel) {
 				return function () {
-					sel.addEventListener('change', function () {
 						sel.style.background = sel.selectedOptions[0].style.background;
-						console.log(sel.id + ' change to ' + sel.selectedOptions[0].value)						
-					})
-				}
+						console.log('change ' + sel.id + ' to ' + sel.selectedOptions[0].value)						
+					}				
 			}
 			
 			function entrada () {
@@ -342,7 +340,7 @@ function ranquear (bact, testes, max_prob = PORCENTAGEM_MAX, nome = TAG_NOME) {
 					o.style = 'background:' + o.background
 					e.appendChild(o)										
 				}
-				entrada_change_iife(e)()
+				e.addEventListener('change', entrada_change_iife(e))
 				return e 
 			}			
 
@@ -403,20 +401,39 @@ function ranquear (bact, testes, max_prob = PORCENTAGEM_MAX, nome = TAG_NOME) {
 		Código-fonte disponível em <a href="https://github.com/akirademenech/gram--/tree/main/js/" target="_blank">github.com/AkiraDemenech/gram--</a>
 
 		<br>
+		<b>
 
 		Acesse online em <a href="https://akirademenech.github.io/ccs/bgn/lab.html" target="_blank">akirademenech.github.io/ccs/bgn/lab.html
 
-		<br><img src="https://akirademenech.github.io/ccs/bgn/gram--.PNG" alt="QR Code para o link: akirademenech.github.io/ccs/bgn/lab.html" height="40%"></a>
+		<br><img src="https://akirademenech.github.io/ccs/bgn/gram--.SVG" alt="QR Code para o link: akirademenech.github.io/ccs/bgn/lab.html" width="256" id="qrcode"></a>
+		</b>
+
+		<br><i>Feedback</i>: 
+		<a href="https://forms.gle/mRLhb8GEpU1TnAt67" target="_blank">
+			forms.gle/mRLhb8GEpU1TnAt67
+		</a>
 
 		<br>
 
 		Última atualização em 
-		15/08/2023
+		31/08/2023
 	</div>		
 
 		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+		<script>
+			w = [window.innerWidth, document.documentElement.clientWidth, document.body.clientWidth, 
+			window.innerHeight, document.documentElement.clientHeight, document.body.clientHeight];
+			var l = 0;
+			for(c = 0; c < w.length; c++)
+				if(w[c] < w[l])
+					l = c;
+
+			qrcode = document.getElementById('qrcode');	
+			if(qrcode.width > w[l])
+				qrcode.width = w[l] * 0.6;
+		</script>
 		
 	</body>	
 </html>

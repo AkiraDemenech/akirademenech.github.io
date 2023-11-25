@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang='pt-BR'>
+	<head>
+		<meta charset='UTF-8'>
+		<title>
+			Problema de Monty Hall
+		</title>
+	</head>
+
+	<body>
+		<h1>
+			Vamos fazer as portas do problema de Monty Hall
+		</h1>
+
+<center id='portas'></center>
+
+<script>
+	const MANTER_PORTA = 'portas/manter.png'
+	const TROCAR_PORTA = 'portas/trocar.png'
+	const PORTA_FECHADA = 'portas/fechada.png'
+	const PORTA_CABRA = 'portas/cabra.png'
+	const PORTA_CARRO = 'portas/carro.png'
+	
+
+	const ALT_TEXT = {
+		[TROCAR_PORTA]: 'Desenho de uma porta verde fechada escrito "ou quer trocar?" em Comic Sans roxa.',
+		[MANTER_PORTA]: 'Desenho de uma porta verde fechada escrito "quer manter?" em Comic Sans roxa.',
+		[PORTA_CABRA]: 'Desenho do batente verde de uma porta aberta com uma cabra marrom dentro.',
+		[PORTA_CARRO]: 'Desenho do batente verde de uma porta aberta com um carro vermelho dentro.',
+		[PORTA_FECHADA]: 'Desenho de uma porta verde fechada.'
+	}
+
+	portas = document.getElementById('portas')
+	LARGURA_MAX = 10
+	LARGURA_MIN = 5
+
+	function gerar_portas (cabras, carros, abre) {
+		portas.abre = abre
+		portas.total = cabras + carros 
+		portas.cabras = cabras 
+		portas.carros = carros 
+
+		portas.selecionada = null
+		largura = portas.total
+		d = largura / 2
+		if(d > LARGURA_MAX)
+			d = LARGURA_MAX
+		else d = Math.floor(d)
+		for(; d >= LARGURA_MIN; d--)
+			if(largura % d == 0) {
+				largura = d
+				break
+			}
+		if(largura > LARGURA_MAX)
+			largura = LARGURA_MAX
+		else if(largura < LARGURA_MIN)
+			largura = LARGURA_MIN
+		largura = (100 / largura) + '%'
+		
+		for(c = 1; c <= portas.total; c++) {
+			const p = document.createElement('img')
+			portas.appendChild(p)
+			
+			p.id = c			
+			p.style.width = largura
+			
+			p.onclick = () => {
+				abrir_porta(p)
+			}
+
+			p.premiada = false
+			p.aberta = false
+			
+		}
+
+		vazias = []
+		for(c = 0; c < portas.childNodes.length; c++)
+			if(!portas.childNodes[c].premiada)
+				vazias[vazias.length] = portas.childNodes[c]
+
+		if(vazias.length < carros)
+			carros = vazias.length
+
+		while (carros > 0) {
+			c = Math.floor(vazias.length * Math.random())
+			p = vazias[c]
+			console.log(p.id,p.premiada,carros)
+
+			carros -= 1
+
+			p.premiada = true	
+			vazias = vazias.filter(p => !p.premiada)
+		}
+
+		colocar_img()
+
+	}
+
+	function abrir_porta (porta) {
+		limpar_func()
+		if(portas.selecionada != null) 
+			return
+
+		console.log('Você escolheu a porta',porta.id)
+		porta.src = MANTER_PORTA
+		porta.alt = ALT_TEXT[MANTER_PORTA]
+		porta.onclick = manter
+
+		portas.selecionada = porta
+		revelar_portas()
+	}
+	
+	function revelar_portas () {
+		fechadas = []
+		for(c = 0; c < portas.childNodes.length; c++) {
+			p = portas.childNodes[c]
+
+			if(p.id == portas.selecionada.id || p.aberta || p.premiada)
+				continue
+
+			fechadas[fechadas.length] = p
+		}
+
+		if(fechadas.length < portas.abre)
+			portas.abre = fechadas.length
+		
+		while(portas.abre > 0) {
+			c = Math.floor(fechadas.length * Math.random())
+			p = fechadas[c]			
+			console.log(p,fechadas)
+
+			mostrar(p)		
+			console.log('Há uma cabra na porta',p.id)
+			fechadas = fechadas.filter(q => (!q.aberta))			
+			
+			portas.abre -= 1
+		}
+		console.log(c,portas.abre,fechadas.length)
+
+		for(c = 0; c < portas.childNodes.length; c++) {
+			const p = portas.childNodes[c]
+			
+			if(p.id == portas.selecionada.id || p.aberta)
+				continue
+
+			p.src = TROCAR_PORTA
+			p.alt = ALT_TEXT[TROCAR_PORTA]	
+			p.onclick = () => {
+				trocar_porta(p)
+			}
+		}
+	}
+
+	function limpar_func () {
+		for(c = 0; c < portas.childNodes.length; c++)
+			portas.childNodes[c].onclick = undefined
+	}
+
+	function colocar_img () {
+		for(c = 0; c < portas.childNodes.length; c++) {
+			p = portas.childNodes[c]
+			if(p.aberta)
+				continue
+			p.src = PORTA_FECHADA
+			p.alt = ALT_TEXT[PORTA_FECHADA]
+		}
+	}
+
+	function mostrar (porta) {
+		porta.src = (porta.premiada) ? PORTA_CARRO : PORTA_CABRA
+		porta.alt = ALT_TEXT[porta.src]
+		porta.aberta = true
+	}
+
+	function manter () {
+		console.log('Você manteve sua escolha pela porta',portas.selecionada.id)
+		limpar_func()
+
+		mostrar(portas.selecionada)		
+		colocar_img()
+		
+			
+	}
+
+	function trocar_porta (porta) {
+		console.log('Você trocou pela porta',porta.id)
+		limpar_func()
+		mostrar(porta)
+
+		colocar_img()
+	}
+
+	gerar_portas(2,1,1)
+	
+</script>
+
+	</body>
+</html>

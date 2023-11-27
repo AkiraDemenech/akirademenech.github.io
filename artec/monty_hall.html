@@ -35,6 +35,7 @@
 	LARGURA_MIN = 5
 
 	function gerar_portas (cabras, carros, abre) {
+		limpar_portas()
 		portas.abre = abre
 		portas.total = cabras + carros 
 		portas.cabras = cabras 
@@ -149,6 +150,11 @@
 				trocar_porta(p)
 			}
 		}
+	}
+
+	function limpar_portas () {
+		while(portas.childNodes.length > 0)
+			portas.childNodes[0].remove()
 	}
 
 	function limpar_func () {

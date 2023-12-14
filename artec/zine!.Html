@@ -11,30 +11,93 @@
 
 		<meta name="author" content="Akira Demenech">
 		<meta name="description" content="Zine! description">
+
+		<style> 
+			 
+			body {
+				margin: 0;
+				padding: 0;
+			}
+
+			.margens-internas {
+				padding: 15%;																
+			}
+
+			.margens-externas {
+				margin: 3%;				
+			}
+
+			.invertido {
+				transform: rotate(0.5turn);
+			}
+			
+			/* Estilos para a impressão */ 
+			@media print { 
+				@page { 
+					size: landscape; /* Define o layout da página como paisagem */ 					
+				}	
+				
+				
+				.imprime { 
+					display: block; 
+				} 
+				
+				/* Estilos para a tela */
+				.tela { 
+					display: none; 					
+				} 
+			} 
+
+			
+
+			.pagina {
+				width: 25%;
+				padding-bottom: 35.35%;
+				float: left; /* Faz com que os blocos flutuem à esquerda */
+				position: relative;
+			} 
+			.conteudo {
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				overflow-wrap: break-word;
+				position: absolute;
+				object-fit: cover; /* Redimensiona a imagem para cobrir a área */
+			}
+		</style>
 	</head>
 
 	<body>
 		
-		<div>
+		<div class='margens-externas' id='explica'>
 			<h1>
-				6 amigues se reúnem secretamente
-				<br> 6 presentes são trocados
+				<place id='n0'></place> 
+				amigues se reúnem secretamente
+				<br> <place id='n1'></place> 
+				presentes são trocados
 			</h1>
 
 			<h2>	
-				São mais de 256 bilhões de possibilidades de quem dá qual presente pra quem (com qual imagem)
+				São	
+				<place id='n!^4 text'></place> 
+				possibilidades de quem dá qual presente pra quem (com qual imagem)
 
 				<center>
-					(6!)<sup>4</sup>
-					= (6 &#215; 5 &#215; 4 &#215; 3 &#215; 2 &#215; 1)<sup>4</sup>
-					= 720<sup>4</sup>
-					= 268.738.560.000
+					(<place id='n2'></place>!)<sup id='e0'></sup>
+					= (<place id='n! prod'></place>)<sup id='e1'></sup>
+					= <place id='n!'></place><sup id='e2'></sup>
+					= <place id='n!^4'></place>
 				</center>
 
-				Cada exemplar tem 6 páginas 
+				Cada exemplar tem 
+				<place id='n3'></place> 
+				páginas 
 				<b>exclusivas</b>
-				de 1296 possíveis 
-				(6<sup>4</sup> = 1296)
+				de	
+				<place id='n^4'></place>
+				possíveis 
+				(<place id='n4'></place><sup id='e3'></sup>)
 			</h2>
 
 			<h3>
@@ -52,6 +115,528 @@
 			renderizados com LaTeX: 
 			<a href='https://github.com/AkiraDemenech/o_fabuloso_gerador_de_minizine'>github.com/AkiraDemenech/o_fabuloso_gerador_de_minizine</a>
 				
+			<p>	
+				<a href='https://akirademenech.github.io/artec/zine!.Html'>
+					<img src='zine!.svg' id='qr'/>
+				</a>	
+			</p>	
 		</div>
+
+		<script id='insere n'>
+
+			const n = 6
+			const e = 4
+			formato = Intl.NumberFormat('pt-BR')
+
+			var numberplaces = ['n0', 'n1', 'n2', 'n3', 'n4']
+			for(c = 0; c < numberplaces.length; c++) 
+				document.getElementById(numberplaces[c]).appendChild(document.createTextNode(n))
+				
+			var numbersup = ['e0', 'e1', 'e2', 'e3']
+			for(c = 0; c < numbersup.length; c++) 
+				document.getElementById(numbersup[c]).appendChild(document.createTextNode(e))
+			
+
+			var fatorial = 1
+			var produto = document.getElementById('n! prod')
+			for(k = n; k > 1; k--) {
+				fatorial *= k
+				produto.appendChild(document.createTextNode(k + ' \xd7 '))	
+			}
+			produto.appendChild(document.createTextNode(1))
+			document.getElementById('n!').appendChild(document.createTextNode(formato.format(fatorial)))
+
+			var np = 1
+			var nf = 1
+			for(c = 0; c < e; c++) {
+				np *= n
+				nf *= fatorial
+			}
+				
+			document.getElementById('n^4').appendChild(document.createTextNode(formato.format(np)))
+			document.getElementById('n!^4').appendChild(document.createTextNode(formato.format(nf)))
+				
+			const grandeza = {0: '',
+				1: 'mil',
+				2: 'milhões',
+				3: 'bilhões',
+				4: 'trilhões',
+				5: 'quadrilhões',
+				6: 'quintilhões',
+				7: 'sextilhões',
+				8: 'septilhões',
+				9: 'octilhões' // */
+			}
+			var esc = []
+			d = 2
+			 
+			while(nf >= 1000) {
+				g = 0
+				m = 1
+				d = 1
+				while(nf > m && grandeza[g] != undefined) {										
+					g++					
+					d = m
+					m *= 1000				
+				}
+				
+				esc[esc.length] = g - 1
+				if(d <= 1) 
+					break
+				nf /= d
+				console.log(nf,d,g, esc)
+			}
+			
+			nt = document.getElementById('n!^4 text')
+			if (nf % 1)
+				nt.appendChild(document.createTextNode('mais de '))						
+			nt.appendChild(document.createTextNode(Math.floor(nf)))
+			while(esc.length) {
+				g = esc.pop()
+				nt.appendChild(document.createTextNode('\t' + grandeza[g]))
+				if (g > 1)
+					nt.appendChild(document.createTextNode(' de'))
+			}	
+
+			document.getElementById('qr').style.height = (window.innerHeight / 3) + 'px'
+		</script>
+
+		<div class='tela margens-externas'>
+			<p>
+				<b>Quantidade</b>:
+				<input id='qtd' type='number' min='1' step='1' value='10'/> 
+			</p>	
+
+			<p>
+				<b>ID inicial</b>:
+				<input id='id_0' type='number' value='0'/> 
+			</p>
+
+			<select id='tipo'></select>
+			<br>
+
+			<button onclick='window.print()'>
+				Imprimir páginas
+			</button>
+
+			<button onclick='limpar(zine)'>
+				Apagar todos os zines
+			</button>
+
+			<button onclick='gerar(qtd.value,inicial.value,tipo.value)'>
+				Gerar!
+			</button>
+
+			<p>
+				<button onclick='explica.classList.add("tela")'>
+					Clique aqui  
+				</button>
+				para ocultar a explicação inicial da impressão.
+
+				<h4>
+					Lembre de imprimir 
+					em <u>paisagem</u> 
+					e <u>sem nenhuma margem</u>						
+				</h4>
+				
+				Até esta parte da página não será impressa.
+			</p>
+		</div>
+
+		<div id='zine'>			 
+			
+			<div class='pagina invertido'>
+				<div class='conteudo margens-internas'>
+					Página 0 
+					(capa)						
+				</div>
+			</div>
+			
+			<div class='pagina invertido'>
+				<div class='conteudo margens-internas'>
+					Página 7 
+					(contracapa)											
+				</div>
+			</div>
+			
+			<div class='pagina invertido'>
+				<div class='conteudo margens-internas'>
+					Página 6	
+				</div>
+			</div>
+			
+			<div class='pagina invertido'>
+				<div class='conteudo margens-internas'>
+					Página 5	
+				</div>
+			</div>
+			
+			<div class='pagina'>
+				<div class='conteudo margens-internas'>
+					Página 1	
+				</div>
+			</div>
+			
+			<div class='pagina'>
+				<div class='conteudo margens-internas'>
+					Página 2	
+				</div>
+			</div>
+			
+			<div class='pagina'>
+				<div class='conteudo margens-internas'>
+					Página 3	
+				</div>
+			</div>
+			
+			<div class='pagina'>
+				<div class='conteudo margens-internas'>
+					Página 4	
+				</div>
+			</div>
+		</div>
+
+		<script id='gera zines'>
+			zine = document.getElementById('zine')
+			tipo = document.getElementById('tipo')
+			qtd = document.getElementById('qtd')
+			inicial = document.getElementById('id_0')
+			explica = document.getElementById('explica')
+			
+
+			function limpar (elemento) {
+				while(elemento.childNodes.length)
+					elemento.childNodes[0].remove()
+			} 
+
+		//	console.log('Larguras:\t',window.innerWidth, document.documentElement.clientWidth, document.body.clientWidth)
+
+			
+
+			for(c = 0; c < zine.childNodes.length; c++) 
+				if(zine.childNodes[c].nodeName == 'DIV')
+					zine.childNodes[c].style.background = 'rgb('+c*255/zine.childNodes.length+', '+(Math.random()*255)+', '+(zine.childNodes.length-c)*255/zine.childNodes.length+')'
+				
+			const dir = 'https://akirademenech.github.io/artec/img/'
+			const img = [
+			{tipo: 'Demo', lista: [
+				{
+					nome:	' ',
+					insta:	' ',
+					img:	'caneca.png',
+					presente:	'um perfume',
+					personagem_dando:	'pra Alice',
+					personagem_recebendo:	'A Alice'
+				},
+				{
+					nome:	' ',
+					insta:	' ',
+					img:	'sudoku.png',
+					presente:	'palavras-cruzadas',
+					personagem_dando:	'pro Bob',
+					personagem_recebendo:	'O Bob'
+				},
+				{
+					nome:	' ',
+					insta:	' ',
+					img:	'hdmi-vga.jpg',
+					presente:	'um adaptador VGA-HDMI com entrada de áudio P1',
+					personagem_dando:	'para um dragão',
+					personagem_recebendo:	'Um dragão'
+				},
+				{
+					nome:	' ',
+					insta:	' ',
+					img:	'031.JPG',
+					presente:	'um barco a vela',
+					personagem_dando:	'para dona Aranha',
+					personagem_recebendo:	'Dona Aranha'
+				},
+				{
+					nome:	' ',
+					insta:	' ',
+					img:	'ipolon.jpg',
+					presente:	'a prova que $a^n + b^n = c^n$ não tem solução para $n > 2$ e $a,b,c,n \\in \\mathbb{Z}^*_+$',
+					personagem_dando:	'pro Beto',
+					personagem_recebendo:	'O Beto'
+				},
+				{
+					nome:	' ',
+					insta:	' ',
+					img:	'klein.png',
+					presente:	'medo de consciência de classe',
+					personagem_dando:	'pro metal',
+					personagem_recebendo:	'O metal'
+				}
+			]},
+			{tipo:'Tipo',lista:[
+				{
+					nome:	'isabella maria píccolo',
+					insta:	'@mpiccolo.isa',
+					img:	'mpiccolo.isa.jpg',
+					presente:	'uma pedra',
+					personagem_dando:	'da Juju',
+					personagem_recebendo:	'a Juju'
+				},
+				{
+					nome:	'isabella maria píccolo',
+					insta:	'@mpiccolo.isa',
+					img:	'mpiccolo.isa2.jpeg',
+					presente:	'uma toalha de banho',
+					personagem_dando:	'de Tereza',
+					personagem_recebendo:	'Tereza'
+				},
+				{
+					nome:	'Larissa Pontes',
+					insta:	'@laripntes',
+					img:	'laripntes.jpg',
+					presente:	'uma caixa de chocolate caribe (100 unidades)',
+					personagem_dando:		'da Maria Eugênia',
+					personagem_recebendo:	'A Maria Eugênia'
+				},	
+				{
+					nome:	'Larissa Pontes',
+					insta:	'@laripntes',
+					img:	'laripntes2.jpg',
+					presente:	'bala fini de gelatina em formato de minhocas',
+					personagem_dando:		'da Maria José',
+					personagem_recebendo:	'A Maria José'
+				},	
+				{
+					nome:	'nathalia fante',
+					insta:	'@nfrtjt',
+					img:	'nfrtjt.jpg',
+					presente:	'cachaça',
+					personagem_dando:		'do corvo',
+					personagem_recebendo:	'o corvo'
+				},	
+				{
+					nome:	'nathalia fante',
+					insta:	'@nfrtjt',
+					img:	'nfrtjt2.jpeg',
+					presente:	'a lua',
+					personagem_dando:		'da carpa',
+					personagem_recebendo:	'a carpa'
+				}
+			]},
+			{tipo:'Tipo',lista:[		
+				{
+					nome:	'Fábio Alcover',
+					insta:	'@fabioalcover',
+					img:	'fabioalcover.jpg',
+					presente:	'um pedaço de bolo',
+					personagem_dando:		'de Pedro Miguel Castelano de Oubrirres e Punha',
+					personagem_recebendo:	'Pedro Miguel Castelano de Oubrirres e Punha'
+				},	
+				{
+					nome:	'Fábio Alcover',
+					insta:	'@fabioalcover',
+					img:	'fabioalcover2.jpg',
+					presente:	'um jogo de chaves de fenda',
+					personagem_dando:		'de Pitu',
+					personagem_recebendo:	'Pitu'
+				},	
+				{
+					nome:	'Fábio Alcover',
+					insta:	'@fabioalcover',
+					img:	'fabioalcover3.jpg',
+					presente:	'uma roupa bem linda',
+					personagem_dando:		'da mãe do Pitu',
+					personagem_recebendo:	'a mãe do Pitu'
+				},	
+				{
+					nome:	'Luana Bibiano de Melo',
+					insta:	'@luana.bibiano.m',
+					img:	'Anel2.png',
+					presente:	'um pequeno violino',
+					personagem_dando:		'da Lagartinha',
+					personagem_recebendo:	'A Lagartinha'
+				},	
+				{
+					nome:	'Luana Bibiano de Melo',
+					insta:	'@luana.bibiano.m',
+					img:	'Bolo2.png',
+					presente:	'um bolo de queijo com goiabada',
+					personagem_dando:		'do Gilbertão',
+					personagem_recebendo:	'O Gilbertão'
+				},	
+				{
+					nome:	'Luana Bibiano de Melo',
+					insta:	'@luana.bibiano.m',
+					img:	'Sapinho.png',
+					presente:	'um anel da sorte (que na verdade dá azar)',
+					personagem_dando:		'da Caju',
+					personagem_recebendo:	'Caju'
+				}
+				]}]
+			
+			for(c = 0; c < img.length; c++) {
+				option = document.createElement('option')
+				option.value = c				
+				option.selected = (c == 1)
+				option.appendChild(document.createTextNode(img[c].tipo + ' #' + c))
+				tipo.appendChild(option)
+			}		
+
+			function gerar_zine (id, lista) {
+				z = []
+				for(c = 0; c < 8; c++)
+					z[c] = document.createElement('div')
+				imagens = []
+
+				semente = []
+				permuta = []
+
+				var a = arranjo(lista.length)
+				for(var c = 0; c < 4; c++) {					
+					sem = Math.floor(Math.random() * a)						
+					semente[c] = sem
+					permuta[c] = perm(sem, lista.length)
+				}	
+				
+				contracapa = z[7]
+				capa = document.createElement('center')
+				z[0].appendChild(capa)
+				
+				capa.titulo = document.createElement('p')
+				capa.titulo.style.fontWeight = 'bold'
+				capa.titulo.appendChild(document.createTextNode('jogo do amigo ' + ((id%2)?'secreto':'oculto') + ' ' + (((id/2)%2 < 1)?'esquisito':'delicado') + '\t' + id))
+				capa.appendChild(capa.titulo)
+				
+				for(i = 0; i < imagens.length; i++) {
+					for(j = 0; j < i; j++) 
+						if(imagens[i].nome == imagens[j].nome)
+							break
+					if(j < i)	
+						continue						 
+					capa.appendChild(document.createElement('br'))
+					capa.appendChild(document.createTextNode(imagens[i].nome))					
+						
+				}
+
+				capa.autoria = document.createElement('p')
+				capa.autoria.appendChild(document.createTextNode('Akira Demenech (org.)')) 								
+				capa.autoria.appendChild(document.createElement('br'))
+				capa.codigo = document.createElement('code') 
+				capa.codigo.appendChild(document.createTextNode('zine!.Html'))
+				capa.autoria.appendChild(capa.codigo)
+				capa.autoria.appendChild(document.createTextNode(' (desorg.)'))
+				capa.appendChild(capa.autoria)
+
+				contracapa.appendChild(document.createTextNode('Este zine foi gerado utilizando a fonte padrão da web'))
+				contracapa.appendChild(document.createElement('br'))
+				contracapa.appendChild(document.createTextNode('A semente sequencial é ' + semente))
+				contracapa.appendChild(document.createElement('br'))
+				contracapa.appendChild(document.createTextNode('A permutação correspondente é ' + permuta))
+				contracapa.appendChild(document.createElement('br'))
+
+				contracapa.link = document.createElement('center')
+				contracapa.link.site = document.createElement('code') 
+				contracapa.link.appendChild(contracapa.link.site)
+				contracapa.link.qr = document.createElement('p')
+				contracapa.link.appendChild(contracapa.link.qr)
+				contracapa.appendChild(contracapa.link)
+
+				contracapa.link.site.appendChild(document.createTextNode('akirademenech.github.io'))
+
+				contracapa.link.img = document.createElement('img')
+				contracapa.link.qr.appendChild(contracapa.link.img)				
+				contracapa.link.img.src = 'zine!.svg'
+				contracapa.link.img.style.width = '50%'
+
+				return z 
+			}
+
+			function gerar (n, id, t) {
+				console.log('Gerando',n,'zines do tipo #' + t + ' começando no número',id)
+				n = parseInt(n)
+				id = parseFloat(id)
+
+				while(n > 0) {
+				//	console.log(n,id)					
+
+					const pag = document.createElement('div')
+					pag.apagar = document.createElement('button')
+					pag.sep = document.createElement('p')
+					pag.sep.classList.add('tela')
+					pag.id = id
+					pag.paginas = []
+				//	pag.classList.add('imprime')
+					pag.apagar.onclick = () => { pag.remove() }
+					pag.apagar.appendChild(document.createTextNode('Deletar zine[' + id + ']'))
+					pag.sep.appendChild(pag.apagar)
+					pag.appendChild(pag.sep)
+					zine.appendChild(pag)
+
+					for(c = 0; c < 8; c++) {
+						p = document.createElement('div')
+						p.cont = document.createElement('div')
+						p.cont.classList.add('conteudo')
+						p.cont.classList.add('margens-internas')
+						p.classList.add('pagina')
+						p.id = id + ' ' + c						
+						p.appendChild(p.cont)						
+						pag.paginas[c] = p
+					//	p.cont.appendChild(document.createTextNode(p.id))
+					}	
+
+					for(c = 8; c > 4; c--) {
+						p = pag.paginas[c%8]
+						pag.appendChild(p)
+						p.classList.add('invertido')	
+					}
+					for(c = 1; c <= 4; c++)					 
+						pag.appendChild(pag.paginas[c])
+
+					quadros = gerar_zine(id, img[0].lista)	
+					for(c = 0; c < quadros.length; c++)	
+						pag.paginas[c].cont.appendChild(quadros[c])
+
+					n--
+					id++
+					
+				}
+				inicial.value = id
+			}	
+		//	limpar(zine)	
+			
+		</script>
+
+		<div class='tela margens-internas'>
+			Fim da página web (e das páginas para impressão)
+		</div>
+
+		<script id='mat'>
+			function arranjo (n, p = 0) {
+				var c = 1
+				while (n > p) {
+					c *= n
+					n--
+				}
+				return c
+			}
+
+			function perm (i, n) {
+				t = []
+				s = []
+				var a = 1
+				for(c = 0; c < n; c++)
+					s[c] = c
+				while(n > 0) {
+					n--
+					a = arranjo(n)
+					p = s[Math.floor(i / a)]
+					i %= a
+					t[n] = p 	
+					s = s.filter((k) => (k != p))
+				//	console.log('\nn',n,'\na',a,'\np',p,'\ni',i,'\ns',s,'\nt',t)
+				}
+				return t
+			}
+ 		</script>
+
+		<script id='iniciar'>
+			gerar(1,-1,0)
+		</script>
 	</body>
 </html>

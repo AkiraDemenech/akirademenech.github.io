@@ -49,6 +49,9 @@
 			} 
 
 			
+			center img {
+				width: 50%;
+			}
 
 			.pagina {
 				width: 25%;
@@ -244,6 +247,7 @@
 				Até esta parte da página não será impressa.
 			</p>
 
+			<input type='file' id='imagem' accept='image/*' />
 		</div>
 
 		<div id='zine'>			 
@@ -323,7 +327,7 @@
 				
 			const dir = 'https://akirademenech.github.io/artec/img/'
 			const img = [
-			{tipo: 'Demo', lista: [
+			{tipo: 'Demo', ganhar: 'deu', guardar: 'não podia ir, guardou pra si', lista: [
 				{
 					nome:	' ',
 					insta:	' ',
@@ -422,7 +426,7 @@
 					personagem_dando:		'da carpa',
 					personagem_recebendo:	'a carpa'
 				}
-			]},
+			], ganhar: 'ganhou', guardar: 'não podia ir, guardou pra si'},
 			{tipo:'Tipo',lista:[		
 				{
 					nome:	'Fábio Alcover',
@@ -472,7 +476,7 @@
 					personagem_dando:		'da Caju',
 					personagem_recebendo:	'Caju'
 				}
-				]}]
+				], ganhar: 'ganhou', guardar: 'não podia ir, guardou pra si'}]
 			
 
 			for(c = 0; c < img.length; c++) {
@@ -485,7 +489,10 @@
 				tipo.appendChild(option)
 			}		
 
-			function gerar_zine (id, lista) {
+			function gerar_zine (id, modelo) {
+				ganhar = modelo.ganhar
+				guardar = modelo.guardar
+				lista = modelo.lista
 				z = []
 				for(c = 0; c < 8; c++)
 					z[c] = document.createElement('div')
@@ -523,8 +530,8 @@
 					
 					if(dando[c].personagem_dando != recebendo[c].personagem_dando || dando[c].personagem_recebendo != recebendo[c].personagem_recebendo) {
 						presente += '\t' + dando[c].personagem_dando
-						texto += 'ganhou'
-					} else texto += 'não podia ir, guardou pra si'
+						texto += ganhar
+					} else texto += guardar
 
 					c++
 
@@ -535,7 +542,7 @@
 					z[c].appendChild(centro)
 					centro.appendChild(fig)
 					fig.src = url
-					fig.style.height = '25vh'
+					
 				}
 
 				contracapa = z[7]
@@ -590,7 +597,7 @@
 				contracapa.link.img = document.createElement('img')
 				contracapa.link.qr.appendChild(contracapa.link.img)				
 				contracapa.link.img.src = 'zine!.svg'
-				contracapa.link.img.style.width = '50%'
+			//	contracapa.link.img.style.width = '50%'
 
 				return z 
 			}
@@ -638,7 +645,7 @@
 					for(c = 1; c <= 4; c++)					 
 						pag.appendChild(pag.paginas[c])
 
-					quadros = gerar_zine(id, img[t].lista)	
+					quadros = gerar_zine(id, img[t])	
 					for(c = 0; c < quadros.length; c++)	
 						pag.paginas[c].cont.appendChild(quadros[c])
 

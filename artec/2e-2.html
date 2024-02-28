@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>
+			2e-2
+		</title>
+
+		<meta charset="UTF-8">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+		<meta name="author" content="Akira Demenech">
+		<meta name="description" content="Zine! description">
+
+		<style> 
+			 
+			body {
+				margin: 0;
+				padding: 0;
+			}
+
+			.margens-internas {
+				padding: 5%;																
+			}
+
+			.margens-externas {
+				margin: 3%;				
+			}
+
+			.invertido {
+				transform: rotate(0.5turn);
+			}
+			
+			/* Estilos para a impressão */ 
+			@media print { 
+				@page { 
+					size: landscape; /* Define o layout da página como paisagem */ 					
+				}	
+				
+				
+				.imprime { 
+					display: block; 
+				} 
+				
+				/* Estilos para a tela */
+				.tela { 
+					display: none; 					
+				} 
+			} 
+
+			center img {
+				width: 50%;
+			}
+
+			.pagina {
+				width: 25%;
+				padding-bottom: 35.35%;
+				float: left; /* Faz com que os blocos flutuem à esquerda */
+				position: relative;
+			} 
+			.conteudo {
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				overflow-wrap: break-word;
+				position: absolute;
+				object-fit: cover; /* Redimensiona a imagem para cobrir a área */
+			}
+		</style>
+	</head>
+
+	<body>
+		
+	</body>
+</html>

@@ -4,24 +4,55 @@
 
 <div id='portas'>
 
+	Carregando portas....
 </div>
 
 <h2 id='resultado'>
 
+	Este texto não deveria aparecer no navegador.
 </h2>
 
 <h3 id='instr'>
 
+	Aguardando....
 </h3>
 
 <h4 id='param'>
 
+	Carregando parâmetros....
 </h4>
 
+<p>
+	p = 
+	<input id='p' 
+		placeholder='Portas' 
+		type='number' 
+		min='0' step='1' 
+		onchange='carregar_p()' />
+</p>
+
+<p>
+	n = 
+	<input id='n' 
+		placeholder='Prêmios' 
+		type='number' 
+		min='0' step='1' 
+		onchange='carregar_n()' />
+</p>
+
+<p>
+	m = 
+	<input id='m' 
+		placeholder='Portas abertas pelo apresentador' 
+		type='number' 
+		min='0' step='1' 
+		onchange='carregar_m()' />
+</p>
+
 <script>
-	const p = 3 // quantidade de portas 
-	const n = 1 // quantidade de prêmios 
-	const m = p - n - 1 // quantidade de portas abertas pelo apresentador depois da primeira escolha de porta(s)
+	var p = 3 // quantidade de portas 
+	var n = 1 // quantidade de prêmios 
+	var m = p - n - 1 // quantidade de portas abertas pelo apresentador depois da primeira escolha de porta(s)
 
 	var porta_escolhida = undefined	
 	 
@@ -33,6 +64,10 @@
 	const resposta = document.getElementById('resultado')
 	const portas = document.getElementById('portas')
 		
+	const var_p = document.getElementById('p')
+	const var_n = document.getElementById('n')
+	const var_m = document.getElementById('m')
+
 	const img_dir = 'portas/'
 	const img_ext = '.png'
 
@@ -45,6 +80,10 @@
 	const largura = (p > 8)?('10%'):(100 / (p + 2) + '%')
 	
 	
+	function limpar (elementos) {
+		while (elementos.length > 0)
+			elementos[0].remove()
+	}
 
 	function remover (lista, valor) {
 		var i = lista.length
@@ -105,35 +144,110 @@
 
 	}
 
-	for(c = 1; c <= p; c++)	{
-		const porta = new Image()
-		
-		portas.appendChild(porta)
-		portas[c] = porta 
-		
-		porta.src = fechada 
-		porta.style.width = largura 
-		porta.id = c
-		porta.alt = c + ': desenho da porta verde fechada.'
-		porta.onclick = () => {
-			escolher(porta.id)
+	function carregar () {
+		porta_escolhida = undefined
+
+		limpar(portas.childNodes)
+		limpar(param.childNodes)
+		limpar(instr.childNodes)
+		limpar(resposta.childNodes)
+
+		portas_premiadas.splice(0)
+		portas_vazias.splice(0)
+
+		for(c = 1; c <= p; c++)	{
+			const porta = new Image()
+			
+			portas.appendChild(porta)
+			portas[c] = porta 
+			
+			porta.src = fechada 
+			porta.style.width = largura 
+			porta.id = c
+			porta.alt = c + ': desenho da porta verde fechada.'
+			porta.onclick = () => {
+				escolher(porta.id)
+			}
+
+			portas_vazias.unshift(porta.id)
+			
+			
+		}	 			
+
+		while (portas_premiadas.length < n) {
+			i = Math.floor(Math.random() * portas_vazias.length)
+			k = portas_vazias.splice(i, 1)[0] // remove 1 elemento a partir da posição i, recebe como lista e obtém o valor desse elemento
+			portas_premiadas.unshift(k)
 		}
 
-		portas_vazias.unshift(porta.id)
+	//	portas_vazias.sort()
+		portas_premiadas.sort()	
 		
-		
-	}	 			
+		console.log('Spoiler:', portas_premiadas, portas_vazias)
 
-	while (portas_premiadas.length < n) {
-		i = Math.floor(Math.random() * portas_vazias.length)
-		k = portas_vazias.splice(i, 1)[0] // remove 1 elemento a partir da posição i, recebe como lista e obtém o valor desse elemento
-		portas_premiadas.unshift(k)
+		param.appendChild(document.createTextNode('p = ' + p + ', n = ' + n + ' e m = ' + m))
+	}	
+	
+	carregar()
+	
+	// atualizar valores dos campos de entrada 
+	var_p.value = p
+	var_n.value = n
+	var_m.value = m
+	
+	var_p.valor = p
+	var_n.valor = n
+	var_m.valor = m
+
+	function carregar_p () {
+		if (var_p.value.length <= 0) 
+			return 
+
+		// ler valor de entrada e atualizar variável
+		
+		var_p.valor = parseInt(var_p.value)
+
+		calcular_m()
+		
 	}
 
-//	portas_vazias.sort()
-	portas_premiadas.sort()	
-	
-	console.log('Spoiler:', portas_premiadas, portas_vazias)
+	function carregar_n () {
+		if (var_n.value.length <= 0) 
+			return
+
+		// ler valor de entrada e atualizar variável
+		var_n.valor = parseInt(var_n.value)
+
+		calcular_m()
+		
+	}
+
+	function carregar_m () {
+		// ler valor de entrada e atualizar variável
+		if (var_m.value.length > 0) 
+			var_m.valor = parseInt(var_m.value)
+		
+	}
+
+	function calcular_m () {
+		var_m.valor = var_p.valor - var_n.valor - 1
+		if (var_m.valor < 0)
+			var_m.valor = 0
+		var_m.value = var_m.valor // substituir valor do campo de entrada 
+	}
 
 	
+	function recarregar () {
+		p = var_p.valor
+		n = var_n.valor
+		m = var_m.valor
+
+	
+		carregar()
+	}
+
 </script>
+
+<button onclick='recarregar()'>
+	Recomeçar!
+</button>

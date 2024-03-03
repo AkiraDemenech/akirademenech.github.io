@@ -1,0 +1,139 @@
+<h1>
+	Escolha uma dessas portas:
+</h1>
+
+<div id='portas'>
+
+</div>
+
+<h2 id='resultado'>
+
+</h2>
+
+<h3 id='instr'>
+
+</h3>
+
+<h4 id='param'>
+
+</h4>
+
+<script>
+	const p = 3 // quantidade de portas 
+	const n = 1 // quantidade de prêmios 
+	const m = p - n - 1 // quantidade de portas abertas pelo apresentador depois da primeira escolha de porta(s)
+
+	var porta_escolhida = undefined	
+	 
+	const portas_vazias = []
+	const portas_premiadas = []		
+
+	const param = document.getElementById('param')
+	const instr = document.getElementById('instr')
+	const resposta = document.getElementById('resultado')
+	const portas = document.getElementById('portas')
+		
+	const img_dir = 'portas/'
+	const img_ext = '.png'
+
+	const cabra = img_dir + 'cabra' + img_ext
+	const carro = img_dir + 'carro' + img_ext
+	const fechada = img_dir + 'fechada' + img_ext
+
+	
+
+	const largura = (p > 8)?('10%'):(100 / (p + 2) + '%')
+	
+	
+
+	function remover (lista, valor) {
+		var i = lista.length
+		while (i >= 0) {
+			lista.splice(i,1)
+			i = lista.indexOf(valor)
+		}		  
+	}
+
+	function escolher (porta) {		 
+
+		console.log('Porta',porta)		
+
+		if (porta_escolhida == undefined) {
+			// primeira escolha 
+			porta_escolhida = porta 
+			remover(portas_vazias, porta) // se a porta tiver uma cabra, remove da lista para evitar que seja aberta.			 
+ 			
+			for(c = 0; c < m && portas_vazias.length > 0; c++) { // abre m portas com cabras 
+				i = Math.floor(Math.random() * portas_vazias.length)
+				id = portas_vazias[i]
+
+				remover(portas_vazias, id)
+				
+				porta_aberta = portas[id]				
+
+				porta_aberta.src = cabra 
+				porta_aberta.alt = id + ': desenho da porta verde aberta, com uma cabra do outro lado.'
+				porta_aberta.onclick = console.log
+
+				instr.appendChild(document.createTextNode('A porta ' + id + ' está aberta e o prêmio não está atrás dela.'))
+				instr.appendChild(document.createElement('br'))
+			}
+
+		} else {
+			// escolha final  
+			for(c = 0; c < portas.childNodes.length; c++)
+				portas.childNodes[c].onclick = console.log
+
+			resposta.appendChild(document.createTextNode((porta == porta_escolhida)?('Manteve: '):('Trocou: ')))	
+			
+			porta_aberta = portas[porta]
+
+			if (portas_premiadas.indexOf(porta) >= 0) {
+				porta_aberta.src = carro 
+				porta_aberta.alt = porta + ': desenho da porta verde aberta, com um carro de prêmio!'
+				res = 'Parabéns! Você ganhou o prêmio atrás da porta ' + porta 
+			} else {
+				porta_aberta.src = cabra 
+				porta_aberta.alt = porta + ': desenho da porta verde aberta, com uma cabra, que não é o prêmio'
+				res = 'Porta errada.'
+			}
+
+			resposta.appendChild(document.createTextNode(res))
+		}
+			
+
+
+	}
+
+	for(c = 1; c <= p; c++)	{
+		const porta = new Image()
+		
+		portas.appendChild(porta)
+		portas[c] = porta 
+		
+		porta.src = fechada 
+		porta.style.width = largura 
+		porta.id = c
+		porta.alt = c + ': desenho da porta verde fechada.'
+		porta.onclick = () => {
+			escolher(porta.id)
+		}
+
+		portas_vazias.unshift(porta.id)
+		
+		
+	}	 			
+
+	while (portas_premiadas.length < n) {
+		i = Math.floor(Math.random() * portas_vazias.length)
+		k = portas_vazias.splice(i, 1)[0] // remove 1 elemento a partir da posição i, recebe como lista e obtém o valor desse elemento
+		portas_premiadas.unshift(k)
+	}
+
+//	portas_vazias.sort()
+	portas_premiadas.sort()	
+	
+	console.log('Spoiler:', portas_premiadas, portas_vazias)
+
+	
+</script>

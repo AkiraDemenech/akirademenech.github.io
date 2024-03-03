@@ -10,6 +10,9 @@
 	<body>
 		<h1>
 			Vamos fazer as portas do problema de Monty Hall
+			<button onclick='gerar()' hidden id='Simular!'>
+				Recomeçar
+			</button>
 		</h1>
 
 <center id='portas'></center>
@@ -28,11 +31,16 @@
 <button onclick='gerar()'>Simular!</button>
 
 <script>
-	const MANTER_PORTA = 'portas/manter.png'
-	const TROCAR_PORTA = 'portas/trocar.png'
-	const PORTA_FECHADA = 'portas/fechada.png'
-	const PORTA_CABRA = 'portas/cabra.png'
-	const PORTA_CARRO = 'portas/carro.png'
+	const PASTA = 'portas/'
+	const TIPO = '.png'
+	
+	const MANTER_PORTA = PASTA + 'manter' + TIPO
+	const TROCAR_PORTA = PASTA + 'trocar' + TIPO
+	
+	const PORTA_FECHADA = PASTA + 'fechada' + TIPO
+	
+	const PORTA_CABRA = PASTA + 'cabra' + TIPO
+	const PORTA_CARRO = PASTA + 'carro' + TIPO
 	
 
 	const ALT_TEXT = {
@@ -48,11 +56,15 @@
 	carros = document.getElementById('carros')
 	cabras = document.getElementById('cabras')
 	abre = document.getElementById('abre')
+
+	simula = document.getElementById('Simular!')	
+
 	LARGURA_MAX = 10
 	LARGURA_MIN = 5
 
 	function gerar () {
 		gerar_portas(parseInt(cabras.value), parseInt(carros.value), parseInt(abre.value))
+		simula.hidden = true
 	}
 
 	function gerar_portas (cabras, carros, abre) {
@@ -194,12 +206,15 @@
 			p.src = PORTA_FECHADA
 			p.alt = ALT_TEXT[PORTA_FECHADA]
 		}
+
+		
 	}
 
 	function mostrar (porta) {
 		porta.src = (porta.premiada) ? PORTA_CARRO : PORTA_CABRA
 		porta.alt = ALT_TEXT[porta.src]
 		porta.aberta = true
+		simula.hidden = false
 	}
 
 	function manter () {

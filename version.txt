@@ -4,4 +4,4 @@
 "esq":"1.15",
 "swp":"1.1",
 "cnc":"to ProgRef"
-}	# ProgRef, Esquiva e Concorrente
+}	# ProgRef, Esquiva, SwitchPoints e Concorrente 
